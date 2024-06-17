@@ -47,6 +47,7 @@ document.getElementById('autorisationPole').addEventListener('submit', async fun
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('id', data.userData.id); // Сохранение ID пользователя
         localStorage.setItem('userName', data.userData.name); // Сохранение ID пользователя
+        localStorage.setItem('userImg', data.userData.imagePath);
         console.log(data.userData.id + " : " + localStorage.getItem('id'));
         console.log(data.userData.name + " : " + localStorage.getItem('userName'));
 

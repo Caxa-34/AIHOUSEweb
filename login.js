@@ -35,6 +35,7 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('id', data.userData.id);
         localStorage.setItem('userName', data.userData.name);
+        localStorage.setItem('userImg', data.userData.imagePath);
         window.location.href="publication.html";
 
     } catch (error) {

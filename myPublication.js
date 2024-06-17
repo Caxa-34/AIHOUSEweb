@@ -44,7 +44,25 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
 
         const publicationContainer = document.getElementById('myPubContent');
-        publicationContainer.innerHTML = '';
+       // publicationContainer.innerHTML = '';
+
+
+        if(publications == 0)
+            {
+                publicationContainer.textContent = 'У вас пока что нет ни одной записи';
+                publicationContainer.style.marginLeft = '3rem';
+                publicationContainer.style.fontSize = '2rem';
+                publicationContainer.style.fontFamily = 'Inter';
+                publicationContainer.style.fontWeight = '600';
+                publicationContainer.style.color = '#1B1967';
+                publicationContainer.style.marginTop = '3rem';
+            }
+            else{
+                publicationContainer.innerHTML = '';
+               
+            }
+       
+
 
         publications.forEach(publication => {
             let text = publication.text;

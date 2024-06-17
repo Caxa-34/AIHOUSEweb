@@ -16,10 +16,19 @@ document.addEventListener('DOMContentLoaded', async function () {
     const userName = localStorage.getItem('userName');
     document.getElementById('useridIndrop').textContent = userIDdrop.toString();
     document.getElementById('userName').textContent = userName;
-
+    
     //вывод меню
     const dropdownIcon = document.getElementById("userImg");
     const dropdownMenu = document.getElementById("dropdownContent");
+    
+
+        const userImg = localStorage.getItem('userImg');
+        const baseUrl = 'http://94.228.126.25:81'; 
+    
+        const fullAuthorImagePath  = `${baseUrl}/${userImg}`;
+        dropdownIcon.src = fullAuthorImagePath;
+
+
 
     if (dropdownIcon && dropdownMenu) { // Убедитесь, что элементы найдены
         document.addEventListener("click", (event) => {
@@ -39,6 +48,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     //создание возможности показа всплавающего уведомления
     const copyIcon = document.getElementById("copyIcon");
     const userTextElement = document.getElementById("useridIndrop");
+
 
     // Функция для показа уведомления
     const showNotification = (message) => {
@@ -117,6 +127,25 @@ document.addEventListener('DOMContentLoaded', async function () {
             const notifContainer = document.getElementById('notifContainer');
             notifContainer.innerHTML = '';
 
+            const notifCount = document.getElementById('notifCount');
+
+            if(notifications == 0)
+                {
+                    notifContainer.textContent = 'У вас пока что нет уведомлений';
+                    notifContainer.style.textAlign = 'center';
+                    notifContainer.style.fontSize = '1.5rem';
+                    notifContainer.style.fontFamily = 'Inter';
+                    notifContainer.style.fontWeight = '600';
+                    notifContainer.style.color = '#1B1967';
+                    notifContainer.style.marginTop = '10rem';
+                }
+                else{
+                    notifContainer.innerHTML = '';
+                    console.log(notifications.length);
+                    notifCount.textContent = notifications.length;
+                }
+           
+
             notifications.forEach(notificatoin => {
                 const formattedDate = formatDate(notificatoin.dateCreate);
 
@@ -130,12 +159,10 @@ document.addEventListener('DOMContentLoaded', async function () {
                     borderColorClass = 'read-border';
                 }
 
-                console.log("статус " + status);
-                console.log("отформатированная дата " + formattedDate);
                 // Создаем шаблон для каждой публикации
                 const notificatoinTemplate = `
                  <div class="notification-container ${borderColorClass}" id="notification-container" data-id="${notificatoin.id}">
-    
+                        
                     <p id="textTitle" class="titleNotification">${notificatoin.title} ${notificatoin.id}</p>
                     <p id="textPost" class="textNotification" >${notificatoin.text}</p>
                     <p class="dateCreateNotif">${formattedDate}</p>
@@ -191,7 +218,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         } catch (error) {
             console.error('Ошибка при загрузке уведомлений:', error);
-            notifContainer.innerHTML = '<p>Не удалось загрузить уведомления</p>';
+           
         }
     }
 

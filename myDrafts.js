@@ -46,6 +46,24 @@ document.addEventListener('DOMContentLoaded', async function () {
         const publicationContainer = document.getElementById('myPubContentDraft');
         publicationContainer.innerHTML = '';
 
+
+        
+        if(drafts == 0)
+            {
+                publicationContainer.textContent = 'У вас пока что нет ни одного черновика';
+                publicationContainer.style.marginLeft = '3rem';
+                publicationContainer.style.fontSize = '2rem';
+                publicationContainer.style.fontFamily = 'Inter';
+                publicationContainer.style.fontWeight = '600';
+                publicationContainer.style.color = '#1B1967';
+                publicationContainer.style.marginTop = '3rem';
+            }
+            else{
+                publicationContainer.innerHTML = '';
+               
+            }
+
+
         drafts.forEach(draft => {
             let text = draft.text;
             // Обрезаем текст до 210 символов, если он длиннее

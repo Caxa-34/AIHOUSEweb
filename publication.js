@@ -75,11 +75,16 @@ document.addEventListener('DOMContentLoaded', async function () {
             const likeImageSrc = isLiked ? 'img/unlike.svg' : 'img/like.svg';
  
 
+            
+            const baseUrl = 'http://94.228.126.25:81'; 
+            const authorImagePath = `${baseUrl}/${publication.author.imagePath}`;
+            console.log(authorImagePath);
+            
             // Создаем шаблон для каждой публикации
             const publicationTemplate = `
              <div class="pub">
                 <div class=heads>
-                    <img class="pubImege" src="img/user_icon.png">
+                    <img class="pubImege" src="${authorImagePath}">
                    <div class="headerPub">
                         <p class="authorName">${publication.author.name}</p>
                         <p class="dateAdd">${formattedDate}</p>

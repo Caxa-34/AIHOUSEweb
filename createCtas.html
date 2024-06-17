@@ -35,7 +35,17 @@
         </div>
 
         <div class='AuthuserMenu' id="afterAuth">
-          <img src="img/notification.svg" />
+          <img src="img/notification.svg" id="notifImg" />
+          <div class="dropdown-content-notif" id="dropdownContentNotifications">
+            <div class="dropdownNotifHeader">
+              <p class="notifHeader">Уведомления</p>
+              <p class="notifHeader" id="notifCount">0</p>
+            </div>
+            <div class="notifContainer" id="notifContainer">
+              
+            </div>
+          </div>
+
           <img src="img/user_icon.png" class='userImg' id="userImg" />
           <div class="dropdown-content" id="dropdownContent">
             <div class="dropdownMenuHeader">
@@ -143,7 +153,7 @@
   </div>
 
   <script src="dropdownMenu.js"></script>
-
+  <script src="btnExit.js"></script>
 </body>
 
 </html>
