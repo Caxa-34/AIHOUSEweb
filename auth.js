@@ -58,7 +58,7 @@ document.getElementById('autorisationPole').addEventListener('submit', async fun
 
     } catch (error) {
         console.error('Ошибка вида:', error);
-        showNotification("Ошибка авторизации");
+        
     }
 
 });
