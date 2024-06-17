@@ -1,0 +1,209 @@
+*
+{
+    overflow: hidden;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.logo{
+    margin-left: 3rem;
+    margin-top: 3rem;
+    width: 85%;
+    margin: 3rem auto;
+}
+.logo a
+{
+    font-family: Montserrat, sans-serif;
+    font-size: 1.55rem;
+    color: #285680;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.title
+{
+    font-family: Inter;
+    font-size: 3.2rem;
+    font-weight: 600;
+    color: #1B1967;
+}
+
+.regWin
+{
+    display: flex;
+    width: 100vw; /* Ширина контейнера 100% от окна */
+    height: 100vh;
+
+
+}
+
+.regPole
+{
+    width: 44%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.mainDivReg
+{
+    flex-direction: column;
+    width: 85%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+
+.inputDiv
+{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.rightDiv
+{
+    width: 56%;
+    height: 100vh;
+}
+
+img
+{
+    width: 100%;
+    height: 100%;
+}
+
+
+input[type=text], input[type=email], input[type=password]
+{
+    width: 100%;
+    height: 5rem;
+    border-radius: 15px;
+    border: 0.5px solid #1B1967;
+    background-color: #D5E1F0;
+    margin-top: 2rem;
+    font-family: Inter;
+    font-size: 1.15rem;
+    font-weight: 500;
+    padding-left: 55px;
+
+    box-sizing: border-box;
+}
+.email
+{
+    background-image: url('../img/email.svg');
+    background-position: 2% 50%;
+    background-repeat: no-repeat;
+}
+.name
+{
+    background-image: url('../img/no_user.svg');
+    background-position: 2% 50%;
+    background-repeat: no-repeat;
+}
+.pass
+{
+    background-image: url('../img/lock.svg');
+    background-position: 2% 50%;
+    background-repeat: no-repeat;
+}
+
+.checkBoxLine
+{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+
+    text-align: center;
+
+}
+input[type="checkbox"]
+{ 
+	width: 20px;
+	height: 20px;
+    vertical-align: middle;
+}
+input[type="checkbox"]:checked
+{
+    background-color: #555555;
+}
+
+.labelCheck
+{
+    font-family: Inter;
+    font-size: 1rem;
+    vertical-align: middle;
+}
+
+.btnAutiris
+{
+    width: 100%;
+    height: 60px;
+    margin-top: 1.5rem;
+    background-color: #1B1967;
+    color: #EBF4FF;
+    border-radius: 10px;
+    font-family: Inter;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.btnAutiris:checked
+{
+    width: 100%;
+    height: 60px;
+    margin-top: 1.5rem;
+    background-color: #302e68;
+    color: #EBF4FF;
+    border-radius: 10px;
+    font-family: Inter;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.goToRegistrations
+{
+    font-family: Inter;
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    margin-top: 1.2rem;
+    color: #1B1967;
+    
+    align-items: center;
+    text-align: center;
+}
+
+
+.modal-container
+{
+    border-color: #D5E1F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+     width: 100vw;
+     height: 100vh;
+     opacity: 0;
+}
+.modal-container.show
+{
+    pointer-events:all;
+    opacity: 1;
+}
+
+.modal
+{
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 2px 4px #4b4a4a;
+    width: 600px;
+}

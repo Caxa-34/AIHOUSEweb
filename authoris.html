@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/autoris.css">
+    <link rel="stylesheet" href="css/headerSidebar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div id="authForm" class="avtorisationWin">
+
+        <form class="autorisationPole" id="autorisationPole">
+            <header class="logo"><a href="./publication.html">AI.HOUSE</a></header>
+
+            <div  class="mainDivAuto">
+                
+                <h1 class="title">Авторизация</h1>
+
+                <!-- <div class="autorisType">
+                       <div>
+                            <button>email</button>
+                            <button>имя пользователя</button>
+                        </div> 
+                </div> -->
+                <div class="inputDiv">
+                    
+                    <input type="text" class="name" id="username" name="username" placeholder="Имя пользователя" required>
+                    <input type="password" class="pass" id="password" name="password" placeholder="Пароль" required>
+                    
+                    <div class="checkBoxLine">
+                        <div >
+                            <input type="checkbox" name="lock" id="lock" class="check" checked/>
+                            <label for="lock" class="labelCheck">Запомнить пароль</label>
+                        </div>
+                        <a href="./returnPass.html" class="returnPass">Восстановить пароль</a> 
+
+                    </div>
+                   <button type="submit" id="btnAutiris" class="btnAutiris">Авторизоваться</button>
+
+
+                    <a href="./login.html" class="goToRegistrations" >Нет аккаунта? Можно создать прямо сейчас</a>
+                </div>
+            </div>
+        </form>
+        <script src="auth.js">
+            
+        </script>
+
+        <div class="rightDiv">
+            <img src="img/autorisFon.png">
+        </div>
+    </div>
+    </body>
+
+</html>

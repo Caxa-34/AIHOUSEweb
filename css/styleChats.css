@@ -1,0 +1,122 @@
+
+
+/* стили основного контента (публикаций)*/
+.cont
+{
+    height: 100%;
+    width: 79%;
+    margin-top: 0;
+    margin-right: 0;
+    margin-left: calc(20% + 4px);
+}
+
+/*стили поиска*/
+input[type=text]
+{
+    margin-left: 3rem;
+    width: 79%;
+    height: 3.5rem;
+    border-radius: 30px;
+    border: 0.5px solid rgb(30, 30, 30);
+    margin-top: 2.125rem;
+    background-image: url('../img/search.svg');
+    background-position: 97% 50%;
+    background-repeat: no-repeat;
+    font-family: Inter;
+    font-size: 1.15rem;
+    font-weight: 500;
+    padding-left: 25px;
+}
+
+.filters
+{
+    display: inline-block;
+    margin-top: 1.5625rem;
+    margin-left: 3rem;
+
+    
+}
+
+.filters a{
+    margin-left: 0;
+}
+
+.btnFilters
+{
+    height: 2.56rem;
+    border-radius: 30px;
+    border: #1B1967 1px solid;
+    background-color: white;
+    margin-right: 6px;
+    font-size: 1.15rem;
+    font-weight: 500;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #1B1967;
+}
+
+.btnFilters:active
+{
+    background-color: #1B1967;
+    color: #EBF4FF;
+}
+.btnFilters:hover
+{
+    background-color: #1B1967;
+    color: #EBF4FF;
+}
+.btnFilters:focus
+{
+    background-color: #1B1967;
+    color: #EBF4FF;
+}
+
+/*основной раздел*/
+.title{
+    font-size: 2.8rem;
+    font-family: Inter;
+    font-weight: 700;
+    color: #3A3A3A;
+    vertical-align: middle;
+}
+
+    /*шапка основного раздела для чатов*/
+.chats
+{
+    margin-left: 3rem;
+    height: 100vh;
+}
+
+.chatsHeaderInfo
+{
+    margin-top: 3.125rem;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    vertical-align: bottom;
+
+    margin-bottom: 3.125rem;
+}
+
+.taskInfo
+{
+
+    display: flex;
+    flex-direction: row;
+    
+    color: #A7A7A7;
+    font-family: Inter;
+    font-size:  1.1rem;
+    font-weight: 400;
+   
+
+}
+.taskInfo p{
+    margin-left: 3rem;
+}
+
+ 
+
+

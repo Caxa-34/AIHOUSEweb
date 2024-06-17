@@ -1,0 +1,189 @@
+*
+{
+    overflow: hidden;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.logo{
+    margin-left: 3rem;
+    margin-top: 3rem;
+    width: 85%;
+    margin: 3rem auto;
+}
+.logo a
+{
+    font-family: Montserrat, sans-serif;
+    font-size: 1.55rem;
+    color: #285680;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.title
+{
+    font-family: Inter;
+    font-size: 3.2rem;
+    font-weight: 600;
+    color: #1B1967;
+}
+
+.avtorisationWin
+{
+    display: flex;
+    width: 100vw; /* Ширина контейнера 100% от окна */
+    height: 100vh;
+
+
+}
+
+
+.autorisationPole
+{
+    width: 44%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.mainDivAuto
+{
+    flex-direction: column;
+    width: 85%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+
+.autorisType
+{
+    border: 1px solid #1B1967;
+    border-radius: 15px;
+    height: 3.2rem;
+
+    display: flex;
+    flex-direction: column;
+    
+    align-items: stretch;
+}
+.autorisType button
+{
+    margin: 0;
+    
+    height: 100%;
+}
+
+.inputDiv
+{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.rightDiv
+{
+    width: 56%;
+    height: 100vh;
+}
+
+img
+{
+    width: 100%;
+    height: 100%;
+}
+
+
+input[type=text], input[type=password]
+{
+    width: 100%;
+    height: 5rem;
+    border-radius: 15px;
+    border: 0.5px solid #1B1967;
+    background-color: #D5E1F0;
+    margin-top: 2rem;
+    font-family: Inter;
+    font-size: 1.15rem;
+    font-weight: 500;
+    padding-left: 55px;
+
+    box-sizing: border-box;
+}
+.name
+{
+    background-image: url('../img/no_user.svg');
+    background-position: 2% 50%;
+    background-repeat: no-repeat;
+}
+.pass
+{
+    background-image: url('../img/lock.svg');
+    background-position: 2% 50%;
+    background-repeat: no-repeat;
+}
+
+.checkBoxLine
+{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+
+    text-align: center;
+
+}
+input[type="checkbox"]
+{ 
+	width: 20px;
+	height: 20px;
+    vertical-align: middle;
+}
+input[type="checkbox"]:checked
+{
+    background-color: #555555;
+}
+
+.labelCheck
+{
+    font-family: Inter;
+    font-size: 0.8rem;
+    vertical-align: middle;
+}
+.returnPass
+{
+    margin: auto 0;
+    text-decoration: none;
+    font-family: Inter;
+    font-size: 0.9rem;
+    color: #A7A7A7;
+}
+.btnAutiris
+{
+    width: 100%;
+    height: 60px;
+    margin-top: 1.5rem;
+    background-color: #1B1967;
+    color: #EBF4FF;
+    border-radius: 10px;
+    font-family: Inter;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.goToRegistrations
+{
+    font-family: Inter;
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    margin-top: 1.2rem;
+    color: #1B1967;
+    
+    align-items: center;
+    text-align: center;
+}
+
