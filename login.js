@@ -33,6 +33,7 @@ document.getElementById('registrationForm').addEventListener('submit', async fun
 
         alert('Пользователь успешно зарегистрирован!');
         localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('id', data.userData.id);
         window.location.href="publication.html";
 
     } catch (error) {
