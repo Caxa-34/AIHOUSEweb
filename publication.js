@@ -58,28 +58,27 @@ document.addEventListener('DOMContentLoaded', async function () {
             // Обрезаем текст до 210 символов, если он длиннее
             let truncatedText = '';
             let wordsCount = text.split(/\s+/);
-            if(wordsCount.length > 30)
-                {
-                    truncatedText = text.split(/\s+/).slice(0, 30).join(' ') + '...';
-                }
-            else{
+            if (wordsCount.length > 30) {
+                truncatedText = text.split(/\s+/).slice(0, 30).join(' ') + '...';
+            }
+            else {
                 truncatedText = text.split(/\s+/).slice(0, 30).join(' ');
             }
 
             const formattedDate = formatDate(publication.dateCreate);
-            
-             //Проверка, был ли лайк установлен
+
+            //Проверка, был ли лайк установлен
             const isLiked = likedPublications[publication.id] === true;
 
             // Выбираем картинку для лайка в зависимости от состояния
             const likeImageSrc = isLiked ? 'img/unlike.svg' : 'img/like.svg';
- 
 
-            
-            const baseUrl = 'http://94.228.126.25:81'; 
+
+
+            const baseUrl = 'http://94.228.126.25:81';
             const authorImagePath = `${baseUrl}/${publication.author.imagePath}`;
             console.log(authorImagePath);
-            
+
             // Создаем шаблон для каждой публикации
             const publicationTemplate = `
              <div class="pub">
@@ -90,8 +89,8 @@ document.addEventListener('DOMContentLoaded', async function () {
                         <p class="dateAdd">${formattedDate}</p>
                     </div>
                 </div>
-                <p id="textTitle" class="titleElement">${publication.title}</p>
-                <p id="textPost" class="textElement" >${truncatedText}</p>
+                <p id="textTitle" class="titleElement" data-title="${publication.title}">${publication.title}</p>
+                <p id="textPost" class="textElement" data-text="${publication.text}">${truncatedText}</p>
                 <p class="readMore" data-publication-id="${publication.id}">Читать далее...</p>
                 <div class="actionPanel">
                     <button id="likked" type="button" class="like" data-publication-id="${publication.id}" data-liked="${isLiked}"><img id="likeBtn" src="${likeImageSrc}"></button> 
@@ -101,90 +100,125 @@ document.addEventListener('DOMContentLoaded', async function () {
             </div>
          `;
 
-         // Добавляем шаблон публикации в контейнер
-         publicationContainer.insertAdjacentHTML('beforeend', publicationTemplate);
+            // Добавляем шаблон публикации в контейнер
+            publicationContainer.insertAdjacentHTML('beforeend', publicationTemplate);
         });
-        
 
 
-       const publicationElements = document.querySelectorAll('.readMore');
-       publicationElements.forEach(element => {
-           element.addEventListener('click', function() {
-             const publicationIdforRead = this.getAttribute('data-publication-id');
+        const publicationElements = document.querySelectorAll('.readMore');
+
+        publicationElements.forEach(element => {
+            element.addEventListener('click', function () {
+                const publicationIdforRead = this.getAttribute('data-publication-id');
+                const publicationTitleforRead = this.getAttribute('data-title');
+                const publicationTextforRead = this.getAttribute('data-title');
+
                 localStorage.setItem('publicId', publicationIdforRead); // Сохранение ID публикации
+                localStorage.setItem('publicTitle', publicationTitleforRead); 
+                localStorage.setItem('publicText', publicationTextforRead); 
+                
                 console.log("id в хранилище " + localStorage.getItem('publicId'));
-             window.location.href = 'fullPublication.html';
-           });
+                window.location.href = 'fullPublication.html';
+            });
         });
-   
+
+
+        const pubTitle = localStorage.getItem('publicTitle');
+        const pubText = localStorage.getItem('publicText');
+        const searchText = document.getElementById('searchText');
+        //поиск 
+        function searchScorePublication(pubTitle, pubText, searchText) {
+
+
+
+            const searchWords = searchText.split(/\s+/).filter(word => word).map(word => word.toLowerCase());
+            const title = pubTitle.toLowerCase();
+            const text = pubText.toLowerCase();
+            let score = 0;
+
+            searchWords.forEach(word => {
+                if (title.includes(word)) {
+                    score += 10;
+                }
+                if (text.includes(word)) {
+                    score += 1;
+                }
+            });
+
+            return score;
+        }
+
 
         //установка лайка
-    // Обработчик для лайков
-    document.querySelectorAll('.like').forEach(button => {
-        button.addEventListener('click', async function () {
-            const publicationId = this.getAttribute('data-publication-id');
-            const isLiked = this.getAttribute('data-liked') === 'true';
-            const type = isLiked ? 'remove' : 'set';
+        // Обработчик для лайков
+        document.querySelectorAll('.like').forEach(button => {
+            button.addEventListener('click', async function () {
+                const publicationId = this.getAttribute('data-publication-id');
+                const isLiked = this.getAttribute('data-liked') === 'true';
+                const type = isLiked ? 'remove' : 'set';
 
-            console.log(publicationId);
-            console.log("проверка установки лайка  " + isLiked);
-            console.log("лайк из licalStorage  " + likedPublications);
+                console.log(publicationId);
+                console.log("проверка установки лайка  " + isLiked);
+                console.log("лайк из licalStorage  " + likedPublications);
 
-            try {
-                const likeResponse = await fetch('http://94.228.126.25:3210/api/publications/like', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        idUser: userId,
-                        idPublication: publicationId,
-                        type: type
-                    })
-                });
+                try {
+                    const likeResponse = await fetch('http://94.228.126.25:3210/api/publications/like', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            idUser: userId,
+                            idPublication: publicationId,
+                            type: type
+                        })
+                    });
 
-                if (!likeResponse.ok) {
-                    throw new Error(`Network response was not ok: ${likeResponse.statusText}`);
+                    if (!likeResponse.ok) {
+                        throw new Error(`Network response was not ok: ${likeResponse.statusText}`);
+                    }
+
+
+                    // Обновляем состояние лайка
+                    const newLikedState = !isLiked;
+                    this.setAttribute('data-liked', newLikedState);
+
+
+                    // const likeImg = this.querySelector('img');
+
+                    //  if (newLikedState) {
+                    //    likeImg.classList.add('liked');
+                    //} else {
+                    // likeImg.classList.remove('liked');
+                    //}
+
+                    const likeImg = this.querySelector('img');
+                    likeImg.src = newLikedState ? 'img/unlike.svg' : 'img/like.svg';
+
+
+                    // Обновляем счетчик лайков
+                    const countLikesElement = this.nextElementSibling;
+                    const currentLikes = parseInt(countLikesElement.textContent, 10);
+                    countLikesElement.textContent = newLikedState ? currentLikes + 1 : currentLikes - 1;
+
+                    // Обновляем localStorage
+                    likedPublications[publicationId] = newLikedState;
+                    localStorage.setItem('likedPublications', JSON.stringify(likedPublications));
+
+                } catch (error) {
+                    console.error('Error updating like status:', error);
+                    alert("Ошибка при обновлении статуса лайка");
                 }
-
-                
-                // Обновляем состояние лайка
-                const newLikedState = !isLiked;
-                this.setAttribute('data-liked', newLikedState);
-
-
-            // const likeImg = this.querySelector('img');
-
-              //  if (newLikedState) {
-                //    likeImg.classList.add('liked');
-                //} else {
-                   // likeImg.classList.remove('liked');
-                //}
-
-                const likeImg = this.querySelector('img');
-                likeImg.src = newLikedState ? 'img/unlike.svg' : 'img/like.svg';
-    
-                
-                // Обновляем счетчик лайков
-                const countLikesElement = this.nextElementSibling;
-                const currentLikes = parseInt(countLikesElement.textContent, 10);
-               countLikesElement.textContent = newLikedState ? currentLikes + 1 : currentLikes - 1;
-
-                // Обновляем localStorage
-                likedPublications[publicationId] = newLikedState;
-                localStorage.setItem('likedPublications', JSON.stringify(likedPublications));
-
-            } catch (error) {
-                console.error('Error updating like status:', error);
-                alert("Ошибка при обновлении статуса лайка");
-            }
+            });
         });
-    });
 
     } catch (error) {
         console.error('Error fetching publications:', error);
         alert("Кажется возникла ошибка");
     }
+
+
+
 });
 
 

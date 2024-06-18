@@ -16,21 +16,21 @@ document.addEventListener('DOMContentLoaded', async function () {
     const userName = localStorage.getItem('userName');
     document.getElementById('useridIndrop').textContent = userIDdrop.toString();
     document.getElementById('userName').textContent = userName;
-    
+
     //вывод меню
     const dropdownIcon = document.getElementById("userImage");
     const dropdownIconMenu = document.getElementById("userImgMenu");
-    const dropdownMenu = document.getElementById("dropdownContent");
-    
+    const dropdownMenu = document.getElementById("dropdownContent"); 
 
-        const userImg = localStorage.getItem('userImg');
-        const baseUrl = 'http://94.228.126.25:81'; 
-    
-        const fullAuthorImagePath  = `${baseUrl}/${userImg}`;
-        console.log("вывод " + baseUrl + "    " + userImg);
-        dropdownIcon.src = fullAuthorImagePath;
-       dropdownIconMenu.src = fullAuthorImagePath;
-        //console.log(dropdownIconMenu);
+
+    const userImg = localStorage.getItem('userImg');
+    const baseUrl = 'http://94.228.126.25:81';
+
+    const fullAuthorImagePath = `${baseUrl}/${userImg}`;
+    console.log("вывод " + baseUrl + "    " + userImg);
+    dropdownIcon.src = fullAuthorImagePath;
+    dropdownIconMenu.src = fullAuthorImagePath;
+    //console.log(dropdownIconMenu);
 
 
     if (dropdownIcon && dropdownMenu) { // Убедитесь, что элементы найдены
@@ -132,22 +132,21 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             const notifCount = document.getElementById('notifCount');
 
-            if(notifications == 0)
-                {
-                    notifContainer.textContent = 'У вас пока что нет уведомлений';
-                    notifContainer.style.textAlign = 'center';
-                    notifContainer.style.fontSize = '1.5rem';
-                    notifContainer.style.fontFamily = 'Inter';
-                    notifContainer.style.fontWeight = '600';
-                    notifContainer.style.color = '#1B1967';
-                    notifContainer.style.marginTop = '10rem';
-                }
-                else{
-                    notifContainer.innerHTML = '';
-                    console.log(notifications.length);
-                    notifCount.textContent = notifications.length;
-                }
-           
+            if (notifications == 0) {
+                notifContainer.textContent = 'У вас пока что нет уведомлений';
+                notifContainer.style.textAlign = 'center';
+                notifContainer.style.fontSize = '1.5rem';
+                notifContainer.style.fontFamily = 'Inter';
+                notifContainer.style.fontWeight = '600';
+                notifContainer.style.color = '#1B1967';
+                notifContainer.style.marginTop = '10rem';
+            }
+            else {
+                notifContainer.innerHTML = '';
+                console.log(notifications.length);
+                notifCount.textContent = notifications.length;
+            }
+
 
             notifications.forEach(notificatoin => {
                 const formattedDate = formatDate(notificatoin.dateCreate);
@@ -177,51 +176,51 @@ document.addEventListener('DOMContentLoaded', async function () {
                 notifContainer.insertAdjacentHTML('beforeend', notificatoinTemplate);
             });
 
-         // Добавляем обработчик кликов для уведомлений
-        document.querySelectorAll('.notification-container').forEach(notification => {
-            notification.addEventListener('click', async (event) => {
-                const idNotification = event.currentTarget.dataset.id;
+            // Добавляем обработчик кликов для уведомлений
+            document.querySelectorAll('.notification-container').forEach(notification => {
+                notification.addEventListener('click', async (event) => {
+                    const idNotification = event.currentTarget.dataset.id;
 
-                try {
-                    const formData = {
-                        idNotification: idNotification
-                    };
-        
-                    // Выполняем запрос к API для получения уведомлений
-                    const response = await fetch('http://94.228.126.25:3210/api/users/notifications/read', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(formData)
-                    });
-        
-                    if (!response.ok) throw new Error('Network response was not ok.');
-        
-                    const readNotif = await response.json();
-                   // const readnotifications = readNotif.readnotifications;
+                    try {
+                        const formData = {
+                            idNotification: idNotification
+                        };
 
-                    console.log("выполнен " + readNotif);
-                    
-                    const notificationElement = document.querySelector(`.notification-container[data-id="${idNotification}"]`);
-                    if (notificationElement) {
-                        // Изменяем класс уведомления для изменения стиля
-                        notificationElement.classList.remove('unread-border');
-                        notificationElement.classList.add('read-border');
+                        // Выполняем запрос к API для получения уведомлений
+                        const response = await fetch('http://94.228.126.25:3210/api/users/notifications/read', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(formData)
+                        });
+
+                        if (!response.ok) throw new Error('Network response was not ok.');
+
+                        const readNotif = await response.json();
+                        // const readnotifications = readNotif.readnotifications;
+
+                        console.log("выполнен " + readNotif);
+
+                        const notificationElement = document.querySelector(`.notification-container[data-id="${idNotification}"]`);
+                        if (notificationElement) {
+                            // Изменяем класс уведомления для изменения стиля
+                            notificationElement.classList.remove('unread-border');
+                            notificationElement.classList.add('read-border');
+                        }
+
                     }
-                   
-                }
-                catch (error) {
-                    console.error('Ошибка при обновлении статуса уведомления:', error);
-                }
-               
+                    catch (error) {
+                        console.error('Ошибка при обновлении статуса уведомления:', error);
+                    }
+
+                });
             });
-        });
-           
+
 
         } catch (error) {
             console.error('Ошибка при загрузке уведомлений:', error);
-           
+
         }
     }
 

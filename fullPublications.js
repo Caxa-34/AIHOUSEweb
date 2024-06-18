@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', async function () {
     console.log(`Fetching full publication for publicationId: ${publicationId}`);
 
     const formData = {
-        id: publicationId
+        id: publicationId, 
+        idUser:localStorage.getItem('id')
     };
 
     try {
@@ -20,17 +21,19 @@ document.addEventListener('DOMContentLoaded', async function () {
             throw new Error(`Failed to fetch publication: ${response.statusText}`);
         }
 
-        const publication = await response.json();
-        console.log('Publication fetched:', publication);
-
+        const res = await response.json();
+        const publication = res.publication;
         // Обновляем содержимое страницы
+        console.log(publication);
+
         document.getElementById('authorName').textContent = publication.author.name;
         document.getElementById('dateAdd').textContent = new Date(publication.dateCreate).toLocaleDateString();
         document.getElementById('titleText').textContent = publication.title;
         document.getElementById('mainText').textContent = publication.text;
         //document.getElementById('publicationLikes').textContent = publication.countLikes; // Количество лайков
 
-       
+        const authorname = document.getElementById('authorName');
+        console.log(authorname );
 
     } catch (error) {
         console.error('Error fetching full publication:', error);

@@ -29,6 +29,11 @@ input[type=text]
     padding-left: 25px;
 }
 
+.btnSearc
+{
+    margin-left: -100px;
+}
+
 .filters
 {
     display: inline-block;
