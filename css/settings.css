@@ -17,7 +17,7 @@
     font-family: Inter;
     font-weight: 700;
     color: #3A3A3A;
-   
+    border: 1px red solid;
     margin-top: 3rem;
     margin-left: 3rem;
     margin-bottom: 2rem;
@@ -27,8 +27,10 @@
 
 .mainSettings
 {
-    
+    border: 1px green solid;
+
     margin-left: 4rem;
+    color: #3A3A3A;
 }
 .mainSettings p
 {
@@ -36,6 +38,8 @@
     font-family: Inter;
     font-weight: 600;
     margin-bottom: 1rem;
+    padding-bottom: 10px;
+    border-bottom: 2px #D1D6DA solid;
 }
 
 table
@@ -43,9 +47,30 @@ table
     font-size: 1.5rem;
     font-family: Inter;
 
-    
+    border: 1px blue solid;
+    width: 70%;
 }
 
 td, tr{
-    
+    border: 1px green solid;
+}
+
+.titleTd
+{
+    font-size: 1.5rem;
+    font-family: Inter;
+    font-weight: 400;
+}
+.underTd
+{
+    padding-top: 0.5rem;
+    font-size: 1.3rem;
+    font-family: Inter;
+    font-weight: 400;
+    color: #A7A7A7;
+}
+.listTd
+{
+ margin-right: 1rem;
+ text-align: center;
 }
