@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', async function () {
     document.getElementById('userName').textContent = userName;
     
     //вывод меню
-    const dropdownIcon = document.getElementById("userImg");
+    const dropdownIcon = document.getElementById("userImage");
+    const dropdownIconMenu = document.getElementById("userImgMenu");
     const dropdownMenu = document.getElementById("dropdownContent");
     
 
@@ -26,8 +27,10 @@ document.addEventListener('DOMContentLoaded', async function () {
         const baseUrl = 'http://94.228.126.25:81'; 
     
         const fullAuthorImagePath  = `${baseUrl}/${userImg}`;
+        console.log("вывод " + baseUrl + "    " + userImg);
         dropdownIcon.src = fullAuthorImagePath;
-
+       dropdownIconMenu.src = fullAuthorImagePath;
+        //console.log(dropdownIconMenu);
 
 
     if (dropdownIcon && dropdownMenu) { // Убедитесь, что элементы найдены
