@@ -1,0 +1,51 @@
+/* стили основного контента */
+.cont
+{
+    height: 100%;
+    width: 79%;
+    margin-top: 0;
+    margin-right: 0;
+    margin-left: calc(20% + 4px);
+    border-left: #D1D6DA solid 1px;
+    box-sizing: border-box;
+}
+
+/*основной раздел*/
+.title{
+
+    font-size: 2.8rem;
+    font-family: Inter;
+    font-weight: 700;
+    color: #3A3A3A;
+   
+    margin-top: 3rem;
+    margin-left: 3rem;
+    margin-bottom: 2rem;
+
+    vertical-align: middle;
+}
+
+.mainSettings
+{
+    
+    margin-left: 4rem;
+}
+.mainSettings p
+{
+    font-size: 1.5rem;
+    font-family: Inter;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+table
+{
+    font-size: 1.5rem;
+    font-family: Inter;
+
+    
+}
+
+td, tr{
+    
+}
