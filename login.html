@@ -1,39 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/login.css">
-    <link href="/index.js"></script>
+    <link href="/index.js">
+    </script>
 </head>
+
 <body>
     <div class="regWin">
 
         <form class="regPole" id="registrationForm">
             <header class="logo"><a href="./publication.html">AI.HOUSE</a></header>
 
-            <div  class="mainDivReg">
-                
+            <div class="mainDivReg">
+
                 <h1 class="title">Регистрация</h1>
 
                 <div class="inputDiv">
                     <input type="email" class="email" placeholder="Email" id="tbEmail" name="email" required>
-                    <input type="text" class="name" placeholder="Имя пользователя" id="tbUsername" name="nameUser" required>
+                    <input type="text" class="name" placeholder="Имя пользователя" id="tbUsername" name="nameUser"
+                        required>
                     <input type="password" class="pass" placeholder="Пароль" id="tbPassword" name="password" required>
-                    
+
                     <div class="checkBoxLine">
-                        <div >
-                            <input type="checkbox" name="lock" id="lock" class="check" checked/>
+                        <div>
+                            <input type="checkbox" name="lock" id="lock" class="check" checked />
                             <label for="lock" class="labelCheck">Запомнить пароль</label>
                         </div>
-                        
-                        
+
+
                     </div>
-              <button type="submit" id="btnReg" class="btnAutiris">Зарегестрироваться</button> 
+
+                    <!--модальное окно-->
+                    <div id="rulesModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <textarea wrap="soft" type="text" id="varificText" placeholder="Заголовок" class="titlePost" required></textarea>
+
+                            <h2>Правила</h2>
+                            <p>Здесь вы можете указать все правила, которые пользователь должен принять.</p>
+                            <p>Правило 1...</p>
+                            <p>Правило 2...</p>
 
 
-                 <!--   <div class="modal-container" id="modal-container">
+                            <!-- Добавьте больше правил по необходимости -->
+                            <button type="button" id="btnAcceptAndRegister">Принять и зарегистрироваться</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Кнопка для открытия модального окна -->
+                    <button type="button" id="btnShowRules" class="enterReg">Продолжить</button>
+
+                    <!--   <div class="modal-container" id="modal-container">
                         <div class="modal">
                             <ul>
                                 <li>ghbdjndcnj</li>
@@ -48,12 +70,15 @@
             </div>
         </form>
         <script src="login.js"></script>
-        
+        <script>
+           
+        </script>
+
         <div class="rightDiv">
             <img src="img/autorisFon.png">
         </div>
-        
-        
+
+
     </div>
 </body>
 
