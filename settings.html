@@ -132,14 +132,14 @@
                 <p class="title">Настройки</p>
                 <div class="mainSettings">
                     <p>Общие</p>
+                    <!--пол-->
                     <table>
                         <tr>
                             <td class="titleTd">Пол</td>
-                            <td rowspan="2" class="listTd">
+                            <td rowspan="2" class="tdRowspan">
                                 <select>
-                                    <option value="option1">не указан</option>
-                                    <option value="option2">мужчина</option>
-                                    <option value="option3">женщина</option>
+                                    <option value="1">мужчина</option>
+                                    <option value="2">женщина</option>
                                 </select>
                             </td>
                         </tr>
@@ -147,8 +147,154 @@
                             <td class="underTd">Вы можете указать свой пол если захотите</td>
                         </tr>
                     </table>
+
+                    <!--дата рождения-->
+                    <table>
+                        <tr>
+                            <td class="titleTd">Возраст</td>
+                            <td rowspan="2" class="tdRowspan">
+                                <input type="date" id="datePicker">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="underTd">Расскажите сколько вам лет</td>
+                        </tr>
+                    </table>
+
+                    <!--общая информация-->
+                    <table>
+                        <tr>
+                            <td class="titleTd">Общая информация</td>
+                        </tr>
+                        <tr>
+                            <td class="underTd">Напишите пару слов о себе. Нам интересно узнать вас поближе</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea wrap="soft" type="text" id="textAbout" placeholder="О себе" class="textPost"
+                                    required></textarea>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
 
+
+                <div class="mainSettings">
+                    <p>Уведомления</p>
+
+                    <table>
+                        <!-- тех уведомления-->
+                        <tr>
+                            <td class="titleTd">Технические уведомления</td>
+                            <td rowspan="2" class="tdRowspan">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="techNotif">
+                                    <span class="slider"></span>
+                                </label>                            </td>
+                        </tr>
+                        <tr>
+                            <td class="underTd">Уведомления об обновлениях, новых версиях и т.д.</td>
+                        </tr>
+                    </table>
+
+                    <!--уведомл об упоминаниях-->
+                    <table>
+                        <tr>
+                            <td class="titleTd">Уведомления об упоминаниях</td>
+                            <td rowspan="2" class="tdRowspan">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="refNotif">
+                                    <span class="slider"></span>
+                                </label>                            </td>
+                        </tr>
+                        <tr>
+                            <td class="underTd">Уведомления об упоминании другими пользователями</td>
+                        </tr>
+                    </table>
+
+                    <!--Уведомления об ответах<-->
+                    <table>
+                        <tr>
+                            <td class="titleTd">Уведомления об ответах</td>
+                            <td rowspan="2" class="tdRowspan">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="respNotif">
+                                    <span class="slider"></span>
+                                </label>                            </td>
+                        </tr>
+                        <tr>
+                            <td class="underTd">Уведомления об ответах других пользователей на ваши сообщения</td>
+                        </tr>
+                    </table>
+
+                    <!--Уведомления о подписке-->
+                    <table>
+                        <tr>
+                            <td class="titleTd">Уведомления о подписке</td>
+                            <td rowspan="2" class="tdRowspan">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="subNotif">
+                                    <span class="slider"></span>
+                                </label>                            </td>
+                        </tr>
+                        <tr>
+                            <td class="underTd">Уведомления о том, что кто-то на вас подписался</td>
+                        </tr>
+                    </table>
+
+                    <!--Уведомления о лайках<-->
+                    <table>
+                        <tr>
+                            <td class="titleTd">Уведомления о лайках</td>
+                            <td rowspan="2" class="tdRowspan">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="likeNotif">
+                                    <span class="slider"></span>
+                                </label>                            </td>
+                        </tr>
+                        <tr>
+                            <td class="underTd">Уведомления о том что ваш пост оценили</td>
+                        </tr>
+                    </table>
+
+                    <!--Уведомления о коментариях<-->
+                    <table>
+                        <tr>
+                            <td class="titleTd">Уведомления о коментариях</td>
+                            <td rowspan="2" class="tdRowspan">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="comNotif">
+                                    <span class="slider"></span>
+                                </label>                            </td>
+                        </tr>
+                        <tr>
+                            <td class="underTd">Уведомления о том, что кто-то оставил ответ на ваш комментарий или
+                                прокомментировал вашу публикацию</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="mainSettings">
+                    <p>Приватность</p>
+
+                    <table>
+                        <!--только для подписчиков-->
+                        <tr>
+                            <td class="titleTd">Только для подписчиков</td>
+                            <td rowspan="2" class="tdRowspan">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="privacyToggle">
+                                    <span class="slider"></span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="underTd">Ваши посты попадаются в ленте только подписчикам</td>
+                        </tr>
+                    </table>
+                </div>
+                <button type="button" class="btnSaveSettings" id="btnSaveSettings">Сохранить</button>
             </div>
         </div>
     </div>
