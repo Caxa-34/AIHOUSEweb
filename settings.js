@@ -130,10 +130,8 @@ document.getElementById('btnSaveSettings').addEventListener('click', async funct
     };
 
 
-    const genderSelect = document.querySelector('select').value;
-    const dateOfBirdth = document.getElementById('datePicker').value;
     const aboutUser = document.getElementById('textAbout').value;
-
+    
     const techNotif = document.getElementById('techNotif').checked;
     const refNotif = document.getElementById('refNotif').checked;
     const respNotif = document.getElementById('respNotif').checked;
@@ -141,13 +139,33 @@ document.getElementById('btnSaveSettings').addEventListener('click', async funct
     const likeNotif = document.getElementById('likeNotif').checked;
     const comNotif = document.getElementById('comNotif').checked;
     const privacyToggle = document.getElementById('privacyToggle').checked;
+    
+    const genderSelect = document.querySelector('select');
+    let selectedValue = genderSelect.value;
+    
+    // Проверка и преобразование значения "null" в null
+    if (selectedValue === "" || selectedValue === "null") {
+        selectedValue = null;
+    }
+    
+    const dateOfBirdth = document.getElementById('datePicker');
+    let selectedDate = dateOfBirdth.value;
+    
+    // Проверка и преобразование значения "null" в null
+    if (selectedDate === "" || selectedDate === "null") {
+        selectedDate = null;
+    }
 
-    console.log(genderSelect + " " + dateOfBirdth + " " + aboutUser + " " + comNotif);
+    console.log("проверка вывода " + genderSelect);
+    console.log("проверка вывода " + dateOfBirdth);
+    console.log("проверка вывода " + aboutUser);
+    console.log("проверка вывода " + comNotif);
+   
 
     const formData = {
         idUser: localStorage.getItem('id'),
-        idGender: genderSelect,
-        birthday: dateOfBirdth,
+        idGender: selectedValue,
+        birthday: selectedDate,
         aboutMe: aboutUser,
         notifTechnical: techNotif,
         notifResponse: respNotif,
@@ -159,7 +177,10 @@ document.getElementById('btnSaveSettings').addEventListener('click', async funct
         mobileGetPush: true
     };
 
+
+
     try {
+
         const response = await fetch('http://94.228.126.25:3210/api/users/settings/set', {
             method: 'POST',
             headers: {
