@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         // Загружаем лайки из localStorage
         const likedPublications = JSON.parse(localStorage.getItem('likedPublications')) || {};
-
+       
         publications.forEach(publication => {
             let text = publication.text;
             // Обрезаем текст до 210 символов, если он длиннее
@@ -68,10 +68,10 @@ document.addEventListener('DOMContentLoaded', async function () {
             const formattedDate = formatDate(publication.dateCreate);
 
             //Проверка, был ли лайк установлен
-            const isLiked = likedPublications[publication.id] === true;
+            const isLiked = publication.isSetLike;
 
             // Выбираем картинку для лайка в зависимости от состояния
-            const likeImageSrc = isLiked ? 'img/unlike.svg' : 'img/like.svg';
+            const likeImageSrc = publication.isSetLike ? 'img/unlike.svg' : 'img/like.svg';
 
 
 
@@ -79,6 +79,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             const authorImagePath = `${baseUrl}/${publication.author.imagePath}`;
             console.log(authorImagePath);
 
+            const readImageSrc = publication.isRead ? 'img/read.svg' : 'img/unread.svg';
+          
             // Создаем шаблон для каждой публикации
             const publicationTemplate = `
              <div class="pub">
@@ -96,7 +98,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     <button id="likked" type="button" class="like" data-publication-id="${publication.id}" data-liked="${isLiked}"><img id="likeBtn" src="${likeImageSrc}"></button> 
                     <p class="countLikes">${publication.countLikes}</p>
                     <button type="button" class="addSubscribe" id="addSubscribe"><img src="img/subscribe.svg"></button> 
-                    <img src="img/unread.svg" class="like">
+                    <img src="${readImageSrc}" class="addSubscribe" id="readMarcer" data-publication-id="${publication.id}">
                 </div>
             </div>
          `;
@@ -118,8 +120,12 @@ document.addEventListener('DOMContentLoaded', async function () {
                 localStorage.setItem('publicTitle', publicationTitleforRead); 
                 localStorage.setItem('publicText', publicationTextforRead); 
                 
+               
+
+
                 console.log("id в хранилище " + localStorage.getItem('publicId'));
                 window.location.href = 'fullPublication.html';
+
             });
         });
 

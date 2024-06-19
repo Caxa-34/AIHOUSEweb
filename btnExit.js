@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     logoutButton.addEventListener('click', async function () {
         localStorage.removeItem('isLoggedIn');
         localStorage.setItem('id', 0);
-
+        localStorage.setItem('likedPublications', null);
         window.location.href = 'publication.html';
 
     });

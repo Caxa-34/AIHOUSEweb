@@ -204,6 +204,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                         const notificationElement = document.querySelector(`.notification-container[data-id="${idNotification}"]`);
                         if (notificationElement) {
+                            
                             // Изменяем класс уведомления для изменения стиля
                             notificationElement.classList.remove('unread-border');
                             notificationElement.classList.add('read-border');
