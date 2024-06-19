@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="/index.js">
     </script>
 </head>
@@ -35,25 +36,9 @@
 
                     </div>
 
-                    <!--модальное окно-->
-                    <div id="rulesModal" class="modal">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <textarea wrap="soft" type="text" id="varificText" placeholder="Заголовок" class="titlePost" required></textarea>
-
-                            <h2>Правила</h2>
-                            <p>Здесь вы можете указать все правила, которые пользователь должен принять.</p>
-                            <p>Правило 1...</p>
-                            <p>Правило 2...</p>
-
-
-                            <!-- Добавьте больше правил по необходимости -->
-                            <button type="button" id="btnAcceptAndRegister">Принять и зарегистрироваться</button>
-                        </div>
-                    </div>
                     
                     <!-- Кнопка для открытия модального окна -->
-                    <button type="button" id="btnShowRules" class="enterReg">Продолжить</button>
+                    <button type="button" id="btnShowRules" class="btnAutiris">Продолжить</button>
 
                     <!--   <div class="modal-container" id="modal-container">
                         <div class="modal">
@@ -68,6 +53,30 @@
                     <a href="./authoris.html" class="goToRegistrations" id="openModCont">Есть аккаунт? Авторизуйтесь</a>
                 </div>
             </div>
+            <!--модальное окно-->
+            <div id="rulesModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Введите код из письма</p>
+                    <textarea wrap="soft" type="text" id="varificText" placeholder="Код" class="varificText" required></textarea>
+
+                    <h2>Правила</h2>
+                    <p>1. Избегайте оскорблений в чужой адрес. Здесь мы все друзья и мы не хотим никаких
+                         конфликтов и обид, так что давайте будем относиться к друг другу с пониманием и уважением</p>
+                    <p>2. Оставьте все политические и религиозные споры за дверью. Это научно - образовательная платформа и мы хотим что бы каждому здесь было комфортно. Мы понимаем что у каждого свое 
+                        мировоззрение и  убеждения и не преследуем цели навязать вам иное, 
+                        мы лишь хотим избежать неприятных конфликтов и споров</p>
+                    <p>3. Достоверный контент. Пожалуйста публикуйте только проверенный контент, 
+                        не пишите вымысел или непроверенную информацию. Не вводите в заблуждение других людей</p>
+
+
+                    <!-- Добавьте больше правил по необходимости -->
+                    <button type="button" id="btnAcceptAndRegister" class="btnAutirisModal">Принять и зарегистрироваться</button>
+                </div>
+            </div>
+
+
+
         </form>
         <script src="login.js"></script>
         <script>

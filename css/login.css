@@ -1,23 +1,22 @@
-*
-{
+* {
     overflow: hidden;
 }
 
-body{
+body {
     width: 100vw;
     height: 100vh;
     padding: 0;
     margin: 0;
 }
 
-.logo{
+.logo {
     margin-left: 3rem;
     margin-top: 3rem;
     width: 85%;
     margin: 3rem auto;
 }
-.logo a
-{
+
+.logo a {
     font-family: Montserrat, sans-serif;
     font-size: 1.55rem;
     color: #285680;
@@ -25,62 +24,58 @@ body{
     text-decoration: none;
 }
 
-.title
-{
+.title {
     font-family: Inter;
     font-size: 3.2rem;
     font-weight: 600;
     color: #1B1967;
 }
 
-.regWin
-{
+.regWin {
     display: flex;
-    width: 100vw; /* Ширина контейнера 100% от окна */
+    width: 100vw;
+    /* Ширина контейнера 100% от окна */
     height: 100vh;
 
 
 }
 
-.regPole
-{
+.regPole {
     width: 44%;
     display: flex;
     flex-direction: column;
     position: relative;
 }
-.mainDivReg
-{
+
+.mainDivReg {
     flex-direction: column;
     width: 85%;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
 }
 
-.inputDiv
-{
+.inputDiv {
     display: flex;
     flex-direction: column;
-    
+
 }
 
-.rightDiv
-{
+.rightDiv {
     width: 56%;
     height: 100vh;
 }
 
-img
-{
+img {
     width: 100%;
     height: 100%;
 }
 
 
-input[type=text], input[type=email], input[type=password]
-{
+input[type=text],
+input[type=email],
+input[type=password] {
     width: 100%;
     height: 5rem;
     border-radius: 15px;
@@ -94,27 +89,26 @@ input[type=text], input[type=email], input[type=password]
 
     box-sizing: border-box;
 }
-.email
-{
+
+.email {
     background-image: url('../img/email.svg');
     background-position: 2% 50%;
     background-repeat: no-repeat;
 }
-.name
-{
+
+.name {
     background-image: url('../img/no_user.svg');
     background-position: 2% 50%;
     background-repeat: no-repeat;
 }
-.pass
-{
+
+.pass {
     background-image: url('../img/lock.svg');
     background-position: 2% 50%;
     background-repeat: no-repeat;
 }
 
-.checkBoxLine
-{
+.checkBoxLine {
     display: flex;
     flex-direction: row;
     position: relative;
@@ -124,26 +118,24 @@ input[type=text], input[type=email], input[type=password]
     text-align: center;
 
 }
-input[type="checkbox"]
-{ 
-	width: 20px;
-	height: 20px;
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
     vertical-align: middle;
 }
-input[type="checkbox"]:checked
-{
+
+input[type="checkbox"]:checked {
     background-color: #555555;
 }
 
-.labelCheck
-{
+.labelCheck {
     font-family: Inter;
     font-size: 1rem;
     vertical-align: middle;
 }
 
-.btnAutiris
-{
+.btnAutiris, .btnAutirisModal{
     width: 100%;
     height: 60px;
     margin-top: 1.5rem;
@@ -154,8 +146,8 @@ input[type="checkbox"]:checked
     font-size: 1.5rem;
     font-weight: 600;
 }
-.btnAutiris:checked
-{
+
+.btnAutiris:checked {
     width: 100%;
     height: 60px;
     margin-top: 1.5rem;
@@ -166,54 +158,65 @@ input[type="checkbox"]:checked
     font-size: 1.5rem;
     font-weight: 600;
 }
-.goToRegistrations
+
+.btnAutirisModal
 {
+    height: 35px;
+}
+
+.goToRegistrations {
     font-family: Inter;
     font-size: 1.2rem;
     font-weight: 600;
 
     margin-top: 1.2rem;
     color: #1B1967;
-    
+
     align-items: center;
     text-align: center;
 }
 
+/* Стили для модального окна */
+.modal {
+    display: none;
+    /* Скрываем окно по умолчанию */
+    position: fixed;
+    z-index: 1;
+    left: 30px;
+    top: 70px;
+    width: 40%;
+    height: 100%;
+    overflow: auto;
+    padding-top: 60px;
+}
 
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 40px;
+    border: 1px solid #dad9d9;
+    border-radius: 30px;
+    width: 85%;
 
-        /* Стили для модального окна */
-        .modal {
-            display: none; /* Скрываем окно по умолчанию */
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.4);
-            padding-top: 60px;
-        }
+    font-family: Inter;
+    font-size: 1.2rem;
+}
 
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
+.varificText
+{
+    width: 100%;
+}
 
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
 
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

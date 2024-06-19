@@ -1,3 +1,14 @@
+function formatDate(dateString) {
+    const date = new Date(dateString);
+
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed, so add 1
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+
+    return `${year}.${month}.${day} ${hours}:${minutes}`;
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     //проверка авторизации и показ соответствующего функционала
@@ -17,15 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-//выход по кнопке 
-const logoutButton = document.getElementById('logoutButton');
-logoutButton.addEventListener('click', function () {
-    localStorage.removeItem('isLoggedIn');
-    //localStorage.removeItem('userId', 0); 
-    window.location.href = 'publication.html';
-    // jwt token
+    //выход по кнопке 
+    const logoutButton = document.getElementById('logoutButton');
 
-    //если сделан выход запускаем скрипт отображающий публикации с 
-    //вычетом публикаций пользователя в id 0 и лайки с неактивными кнопками 
-});
+    logoutButton.addEventListener('click', async function () {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.setItem('id', 0);
+
+        window.location.href = 'publication.html';
+
+    });
 });

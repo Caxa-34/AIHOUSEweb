@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     <button id="likked" type="button" class="like" data-publication-id="${publication.id}" data-liked="${isLiked}"><img id="likeBtn" src="${likeImageSrc}"></button> 
                     <p class="countLikes">${publication.countLikes}</p>
                     <button type="button" class="addSubscribe" id="addSubscribe"><img src="img/subscribe.svg"></button> 
+                    <img src="img/unread.svg" class="like">
                 </div>
             </div>
          `;

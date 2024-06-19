@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     const userIDdrop = localStorage.getItem('id');
     const userName = localStorage.getItem('userName');
-    document.getElementById('useridIndrop').textContent = userIDdrop.toString();
+    document.getElementById('useridIndrop').textContent = userIDdrop;
     document.getElementById('userName').textContent = userName;
 
     //вывод меню
