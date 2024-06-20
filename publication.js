@@ -13,6 +13,7 @@ function formatDate(dateString) {
 // сделать приветственное сообщение при авторизации
 
 document.addEventListener('DOMContentLoaded', async function () {
+
     const userId = localStorage.getItem('id'); // Получение ID авторизованного пользователя из localStorage
     console.log(`Fetching publications for userId: ${userId}`);
 
@@ -72,14 +73,14 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             // Выбираем картинку для лайка в зависимости от состояния
             const likeImageSrc = publication.isSetLike ? 'img/unlike.svg' : 'img/like.svg';
-
-
+            
+            const readImageSrc = publication.isRead ? 'img/read.svg' : 'img/unread.svg';
+ 
 
             const baseUrl = 'http://94.228.126.25:81';
             const authorImagePath = `${baseUrl}/${publication.author.imagePath}`;
             console.log(authorImagePath);
 
-            const readImageSrc = publication.isRead ? 'img/read.svg' : 'img/unread.svg';
           
             // Создаем шаблон для каждой публикации
             const publicationTemplate = `
