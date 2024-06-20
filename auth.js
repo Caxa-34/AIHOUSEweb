@@ -12,11 +12,11 @@ document.getElementById('autorisationPole').addEventListener('submit', async fun
         const response = await fetch('http://94.228.126.25:3210/api/users/authorization/name', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json' 
             },
             body: JSON.stringify(formData)
         });
-
+ 
         // Проверяем статус ответа
         if (!response.ok) {
             const errorText = await response.text();

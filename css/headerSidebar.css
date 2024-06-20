@@ -362,3 +362,40 @@ a {
     border-radius: 15px;
     margin-right: 11px;
 }
+
+ /* Стили для модального окна */
+ .modal {
+    display: none; /* По умолчанию скрыто */
+    position: fixed; /* Фиксированная позиция на экране */
+    left: 0;
+    top: 0;
+    width: 100%; /* Занимает всю ширину экрана */
+    height: 100%; /* Занимает всю высоту экрана */
+    
+  }
+
+  .modal-content {
+    background-color: #fff;
+    width: 50%; /* Ширина модального окна (половина экрана) */
+    position: absolute;
+    left: 40%; /* Расположение по центру экрана */
+    top: 50%; /* Расположение по центру экрана */
+    transform: translate(-25%, -50%); /* Центрируем модальное окно */
+    padding: 30px;
+    border: 1px solid #888;
+    border-radius: 30px;
+    font-weight: 400;
+    font-size: 1rem;
+    font-family: Inter;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal-body p {
+    white-space: pre-line;
+  }

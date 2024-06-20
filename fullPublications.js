@@ -58,7 +58,15 @@ document.addEventListener('DOMContentLoaded', async function () {
         const res = await response.json();
         const publication = res.publication;
         // Обновляем содержимое страницы
-        console.log(publication);
+        console.log("публикация", publication);
+
+
+        const likeImageSrc = publication.isSetLike ? 'img/unlike.svg' : 'img/like.svg';
+        const likeButtonImg = document.getElementById('likeBtn');
+        // Устанавливаем новый src для изображения
+        likeButtonImg.src = likeImageSrc;
+
+        console.log("значение лайка ", publication.isSetLike, " ", likeImageSrc);
 
         document.getElementById('authorName').textContent = publication.author.name;
         document.getElementById('dateAdd').textContent = new Date(publication.dateCreate).toLocaleDateString();
@@ -67,15 +75,70 @@ document.addEventListener('DOMContentLoaded', async function () {
         const pubText = document.getElementById('mainText');
         pubText.innerHTML = formatTextForHtml(publication.text);
         document.getElementById('countLikes').textContent = publication.countLikes; // Количество лайков
-        
+
 
         const authorname = document.getElementById('authorName');
         console.log(authorname);
 
+
+        //установка лайка
+        // Обработчик для лайков
+        document.getElementById('likked').addEventListener('click', async function () {
+
+            const publicationId = publication.id;
+            let isLiked = publication.isSetLike;
+            const type = isLiked ? 'remove' : 'set';
+
+            console.log("ID публикации:", publicationId);
+            console.log("Текущее состояние лайка:", isLiked);
+            console.log("Тип действия:", type);
+
+
+            try {
+                const likeResponse = await fetch('http://94.228.126.25:3210/api/publications/like', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        idUser: localStorage.getItem('id'),
+                        idPublication: publicationId,
+                        type: type
+                    })
+                });
+
+                if (!likeResponse.ok) {
+                    throw new Error(`Network response was not ok: ${likeResponse.statusText}`);
+                }
+
+                // Обновляем состояние isLiked после успешного запроса
+                isLiked = !isLiked; // Инвертируем текущее состояние
+
+                // Обновляем publication.isSetLike, если это нужно для вашей логики
+                publication.isSetLike = !isLiked;
+
+                // Обновляем иконку кнопки лайка
+                document.getElementById('likeBtn').src = publication.isSetLike ? 'img/unlike.svg' : 'img/like.svg';
+
+                // Если есть элемент для отображения количества лайков, обновляем его
+                if (document.getElementById('likeCount')) {
+                    // Здесь предполагается, что в publication.likesCount содержится текущее количество лайков
+                    document.getElementById('likeCount').textContent = publication.countLikes;
+                }
+
+                location.reload ();
+
+            } catch (error) {
+                console.error('Error updating like status:', error);
+                alert("Ошибка при обновлении статуса лайка");
+            }
+
+        });
 
     } catch (error) {
         console.error('Error fetching full publication:', error);
         alert("Кажется возникла ошибка при загрузке полной публикации.");
     }
 });
+
 

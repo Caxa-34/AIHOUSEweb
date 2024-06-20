@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     localStorage.setItem('userImg', data.userData.imagePath);
                     window.location.href = "publication.html";
                     modal.style.display = "none";
-                }
+                } 
                 else {
                     console.error('Значения не совпадают. Окно будет закрыто.');
                     alert('Значения не совпадают. Регистрация не может быть продолжена.');

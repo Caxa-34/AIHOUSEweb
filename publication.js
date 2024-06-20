@@ -176,9 +176,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     const currentLikes = parseInt(countLikesElement.textContent, 10);
                     countLikesElement.textContent = newLikedState ? currentLikes + 1 : currentLikes - 1;
 
-                    // Обновляем localStorage
-                    likedPublications[publicationId] = newLikedState;
-                    localStorage.setItem('likedPublications', JSON.stringify(likedPublications));
+            
 
                 } catch (error) {
                     console.error('Error updating like status:', error);
