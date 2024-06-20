@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 </div>
                 <p id="textTitle" class="titleElement" data-title="${publication.title}">${publication.title}</p>
                 <p id="textPost" class="textElement" data-text="${publication.text}">${truncatedText}</p>
-                <p class="readMore" data-publication-id="${publication.id}">Читать далее...</p>
+                <p class="readMore" data-publication-id="${publication.id}"  data-liked="${isLiked}">Читать далее...</p>
                 <div class="actionPanel">
                     <button id="likked" type="button" class="like" data-publication-id="${publication.id}" data-liked="${isLiked}"><img id="likeBtn" src="${likeImageSrc}"></button> 
                     <p class="countLikes">${publication.countLikes}</p>
@@ -105,6 +105,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             // Добавляем шаблон публикации в контейнер
             publicationContainer.insertAdjacentHTML('beforeend', publicationTemplate);
+
+           
         });
 
 
@@ -119,42 +121,16 @@ document.addEventListener('DOMContentLoaded', async function () {
                 localStorage.setItem('publicId', publicationIdforRead); // Сохранение ID публикации
                 localStorage.setItem('publicTitle', publicationTitleforRead); 
                 localStorage.setItem('publicText', publicationTextforRead); 
-                
-               
-
-
                 console.log("id в хранилище " + localStorage.getItem('publicId'));
+
+                const isLike = this.getAttribute('data-liked')
+                localStorage.setItem('isLiked', isLike);
+                console.log(localStorage.getItem('isLiked'));
+
                 window.location.href = 'fullPublication.html';
 
             });
         });
-
-
-        const pubTitle = localStorage.getItem('publicTitle');
-        const pubText = localStorage.getItem('publicText');
-        const searchText = document.getElementById('searchText');
-        //поиск 
-        function searchScorePublication(pubTitle, pubText, searchText) {
-
-
-
-            const searchWords = searchText.split(/\s+/).filter(word => word).map(word => word.toLowerCase());
-            const title = pubTitle.toLowerCase();
-            const text = pubText.toLowerCase();
-            let score = 0;
-
-            searchWords.forEach(word => {
-                if (title.includes(word)) {
-                    score += 10;
-                }
-                if (text.includes(word)) {
-                    score += 1;
-                }
-            });
-
-            return score;
-        }
-
 
         //установка лайка
         // Обработчик для лайков
@@ -189,15 +165,6 @@ document.addEventListener('DOMContentLoaded', async function () {
                     // Обновляем состояние лайка
                     const newLikedState = !isLiked;
                     this.setAttribute('data-liked', newLikedState);
-
-
-                    // const likeImg = this.querySelector('img');
-
-                    //  if (newLikedState) {
-                    //    likeImg.classList.add('liked');
-                    //} else {
-                    // likeImg.classList.remove('liked');
-                    //}
 
                     const likeImg = this.querySelector('img');
                     likeImg.src = newLikedState ? 'img/unlike.svg' : 'img/like.svg';

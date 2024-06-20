@@ -87,10 +87,10 @@ a {
 .userImg {
     width: 3.25rem;
     height: 3.25rem;
-    ;
+    border-radius: 30px;
+    border:#3A3A3A 1px solid;
     margin-left: 1rem;
     align-items: center;
-
     cursor: pointer;
 }
 

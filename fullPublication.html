@@ -32,7 +32,7 @@
           <a href='./authoris.html' class='btnToAutoris'>войти</a>
           <img src="img/no_user_icon.jpg" class='userImgNo' />
         </div>
-        <div class='AuthuserMenu' id="afterAuth"> 
+        <div class='AuthuserMenu' id="afterAuth">
 
           <img src="img/notification.svg" id="notifImg" />
           <div class="dropdown-content-notif" id="dropdownContentNotifications">
@@ -41,14 +41,14 @@
               <p class="notifHeader" id="notifCount">0</p>
             </div>
             <div class="notifContainer" id="notifContainer">
-              
+
             </div>
           </div>
 
           <img src="img/user_icon.png" class='userImg' id="userImage" />
           <div class="dropdown-content" id="dropdownContent">
             <div class="dropdownMenuHeader">
-              <img src="img/user_icon.png" class='userImg' id="userImgMenu"/>
+              <img src="img/user_icon.png" class='userImg' id="userImgMenu" />
               <div class="dropdownUserInfo">
                 <p class="userName" id="userName">WherePerry?</p>
                 <div class="dropdownUserID">
@@ -127,8 +127,8 @@
     <!--правая часть-->
     <div class="cont">
       <!--Окно с публикациями-->
-      <div>
-        <p class="title" id="titleText">Заголовок публикации </p>
+      <div class="mainContent">
+        <p class="title" id="titleText"></p>
 
         <div class="headsPub">
           <div class=heads>
@@ -139,19 +139,37 @@
             </div>
             <button id="subscribe" type="button" class="subscribe">Подписаться</button>
           </div>
-          <p class="mainText" id="mainText"> </p>
+          <p class="mainText" id="mainText"></p>
         </div>
-
-
         <div class="actionPanel">
+          <button id="likked" type="button" class="like"><img id="likeBtn" src="./img/like.svg"></button>
+          <p class="countLikes" id="countLikes"></p>
+          <button class="complaints" id="complaints">Пожаловаться на статью</button>
+        </div>
+      </div>
+
+      <div>
+        <div class="commentCount">
+          <p>Коментарии</p>
+          <p class="commCount" id="commCount">0</p>
+        </div>
+
+        <div class="commentsPole" id="comments">
 
         </div>
+        <!-- Поле ввода сообщения и кнопка отправки -->
+        <div class="message-input">
+          <textarea id="EnterComm" placeholder="Введите комментарий..."></textarea>
+          <button id="sendComm"><img src="./img/send.svg"></button>
+        </div>
+
+
       </div>
     </div>
   </div>
   <script src="dropdownMenu.js"></script>
   <script src="fullPublications.js"></script>
-  
+  <script src="comments.js"></script>
   <script src="btnExit.js"></script>
 </body>
 
