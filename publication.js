@@ -46,8 +46,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         console.log('Publications fetched:', publications);
 
-
-
         const publicationContainer = document.getElementById('containerPublication');
         publicationContainer.innerHTML = '';
 
@@ -88,7 +86,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 <div class=heads>
                     <img class="pubImege" src="${authorImagePath}">
                    <div class="headerPub">
-                        <p class="authorName">${publication.author.name}</p>
+                        <p class="authorName" data-author-id="${publication.author.id}">${publication.author.name}</p>
                         <p class="dateAdd">${formattedDate}</p>
                     </div>
                 </div>
@@ -110,6 +108,20 @@ document.addEventListener('DOMContentLoaded', async function () {
            
         });
 
+        const AutorInfo = document.querySelectorAll('.authorName');
+
+        AutorInfo.forEach(element => {
+            element.addEventListener('click', function () {
+                const publicationAuthorId = this.getAttribute('data-author-id');
+                
+                localStorage.setItem('publicAuthorId', publicationAuthorId); // Сохранение ID автора публикации
+                
+                console.log("id автора в хранилище ", publicationAuthorId);
+
+                window.location.href = 'userPage.html';
+
+            });
+        });
 
         const publicationElements = document.querySelectorAll('.readMore');
 
@@ -195,4 +207,3 @@ document.addEventListener('DOMContentLoaded', async function () {
 });
 
 
-//функция для устанвки лайка

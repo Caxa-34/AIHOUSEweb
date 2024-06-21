@@ -32,7 +32,7 @@
           <a href='./authoris.html' class='btnToAutoris'>войти</a>
           <img src="img/no_user_icon.jpg" class='userImgNo' />
         </div>
-        <div class='AuthuserMenu' id="afterAuth"> 
+        <div class='AuthuserMenu' id="afterAuth">
 
           <img src="img/notification.svg" id="notifImg" />
           <div class="dropdown-content-notif" id="dropdownContentNotifications">
@@ -76,9 +76,11 @@
             </div>
             <div class="linkAndImg">
               <img src="img/rules_list.svg" />
-              <a id="modalWinRules">Правила форума</a>
+              <a id="modalWinRules" class="modalWinRules">Правила форума</a>
             </div>
             <Button class='btnToAutoris' id="logoutButton">Выйти </Button>
+            <p class="btnToAutoris">Наша почта <br>
+              ai.house@inbox.ru</p>
           </div>
         </div>
       </div>
@@ -132,7 +134,7 @@
 
         <div class="headsPub">
           <div class=heads>
-            <img class="pubImege" src="img/user_icon.png">
+            <img class="pubImege" id="pubImege" src="img/user_icon.png">
             <div class="headerPub">
               <p class="authorName" id="authorName"></p>
               <p class="dateAdd" id="dateAdd"></p>
@@ -142,13 +144,26 @@
           <p class="mainText" id="mainText"></p>
         </div>
         <div class="actionPanel">
-          <button id="likked" type="button" class="like"><img data-liked="isLiked" id="likeBtn" src="./img/like.svg"></button>
+          <button id="likked" type="button" class="like"><img data-liked="isLiked" id="likeBtn"
+              src="./img/like.svg"></button>
           <p class="countLikes" id="countLikes"></p>
-          <button class="complaints" id="complaints">Пожаловаться на статью</button>
+
+          <div class="complaintsPole">
+            <button class="complaints" id="complaints">Пожаловаться на статью</button>
+            <select id="selectComplaints" class="selectComplaints">
+              <option value="">--Укажите жалобу--</option>
+              <option value="1">Оскорбление личности и её достоинства</option>
+              <option value="2">Религиозная или политическая провокация</option>
+              <option value="3">Публикация недостоверной информации</option>
+              <option value="4">Контент содержит нецензурную лексику</option>
+              <option value="5">Контент содержит жестокие или сексуальные материалы</option>
+              <option value="6">Контент не содержит в себе ничего, что может относиться к тематике форума</option>
+            </select>
+          </div>
         </div>
       </div>
- 
-    <div>
+
+      <div>
         <div class="commentCount">
           <p>Коментарии</p>
           <p class="commCount" id="commCount">0</p>

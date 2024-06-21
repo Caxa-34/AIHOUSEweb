@@ -6,6 +6,7 @@
     margin-top: 0;
     margin-right: 0;
     margin-left: calc(20% + 4px);
+    border: 1px white solid;
     border-left: #D1D6DA solid 1px;
     box-sizing: border-box;
 }
@@ -17,8 +18,8 @@
     font-family: Inter;
     font-weight: 700;
     color: #3A3A3A;
-  
     margin-top: 3rem;
+    
     margin-left: 3rem;
     margin-bottom: 2rem;
 

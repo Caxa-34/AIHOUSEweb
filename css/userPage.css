@@ -1,0 +1,198 @@
+/* стили основного контента */
+.cont {
+    height: 100%;
+    width: 79%;
+    margin-top: 0;
+    margin-right: 0;
+    margin-left: calc(20% + 4px);
+    border: 1px white solid;
+    border-left: #D1D6DA solid 1px;
+    box-sizing: border-box;
+}
+
+/*основной раздел*/
+.title {
+
+    font-size: 2.8rem;
+    font-family: Inter;
+    font-weight: 700;
+    color: #3A3A3A;
+    margin-left: 3rem;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.UserID {
+    display: flex;
+    margin: auto 1rem;
+    margin-top: 1rem;
+}
+
+.UserID p {
+    display: flex;
+
+    color: #A7A7A7;
+    font-weight: 400;
+    font-family: Inter;
+
+}
+
+.headerUserPage {
+    margin-top: 3rem;
+    border-bottom: 1px solid #C3BEBE;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Убираем промежутки между ячейками */
+    table-layout: auto;
+    margin-bottom: 1.5rem;
+
+}
+
+.btnTH {
+    width: 100%;
+    /* Растягиваем третью ячейку */
+    text-align: right;
+}
+
+.subscribe {
+    height: 2.56rem;
+    border-radius: 30px;
+    border: #1B1967 1px solid;
+    background-color: white;
+    font-size: 1.15rem;
+    font-weight: 500;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #1B1967;
+
+}
+
+.subscribe:active {
+    background-color: #1B1967;
+    color: #EBF4FF;
+
+}
+
+.subscribe:focus {
+    background-color: #1B1967;
+    color: #EBF4FF;
+
+}
+
+.userAvatar {
+    width: 130px;
+    height: 130px;
+    margin-left: 3rem;
+    border-radius: 90px;
+    border: 1px solid #696969;
+}
+
+.UserInfo {
+    text-align: left;
+    white-space: nowrap;
+    margin-left: 1rem;
+}
+
+.dataUser {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.dataUser p {
+    margin: 0;
+    /* Убираем стандартные отступы */
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-family: Inter;
+    margin-bottom: 0.8rem;
+}
+
+.name {
+    font-size: 2rem;
+    font-weight: 500;
+    font-family: Inter;
+    margin-bottom: 1rem;
+}
+
+/*публикации*/
+.readMore {
+    margin-bottom: 1rem;
+    color: #A4A4B2;
+    font-family: Inter;
+    font-size: 1.4rem;
+    font-weight: 400;
+    cursor: default;
+}
+
+.dateAdd {
+    margin: 0;
+
+    font-family: Inter;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #A4A4B2;
+}
+
+.titleElement {
+    font-family: Inter;
+    font-size: 1.7rem;
+    margin-top: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.textElement {
+    font-family: Inter;
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+
+.myPubContent,
+.pub {
+    margin-left: 3rem;
+    margin-top: 1rem;
+}
+
+.pub {
+    margin-bottom: 1rem;
+    border-bottom: #A7A7A7 1px solid;
+}
+
+.textUser {
+    height: 5rem;
+    width: 40rem;
+
+    border-radius: 15px;
+    border: 0.5px solid #1B1967;
+    background-color: #fff;
+    padding: 20px;
+
+    font-family: Inter;
+    font-size: 1.15rem;
+    font-weight: 500;
+
+
+    
+}
+
+/* всплывающее уведомление */
+.notification {
+    display: none;
+    /* Изначально скрыто */
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #696969;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    z-index: 1000;
+}

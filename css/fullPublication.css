@@ -44,6 +44,7 @@
     display: inline-block;
     vertical-align: middle;
     border-radius: 30px;
+    border: #3A3A3A 1px solid;
 }
 
 .headerPub {
@@ -120,8 +121,18 @@
 {
     margin-bottom: 1rem;
     margin-left: 3rem;
+
 }
-.like, .countLikes, .complaints
+
+.complaintsPole
+{
+    margin-left: 3rem;
+    display: flex;
+    float: right;
+    vertical-align: middle;
+}
+
+.like, .countLikes
 {
     display: inline-block;
     vertical-align: middle;
@@ -137,7 +148,7 @@
 
 .complaints
 {
-    margin-left: 3rem;
+    margin-right: 1rem;
     font-family: Inter;
     font-size: 1.2rem;
     font-weight: 500;
@@ -249,4 +260,12 @@
 
 .message-input button:hover {
     color: #0056b3;
+}
+
+.selectComplaints
+{
+    width: 10rem;
+    border-radius: 5px;
+    border-color: #a2a2a3;
+    color: #3A3A3A;
 }

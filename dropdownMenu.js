@@ -48,6 +48,22 @@ document.addEventListener('DOMContentLoaded', async function () {
             }
         });
     }
+    //переход на страницу пользователя по клаку на имя пользователя в меню
+    const AutorInfo = document.getElementById('userName');
+
+        AutorInfo.addEventListener('click', function() {
+                const publicationAuthorId = localStorage.getItem('id');
+                
+                localStorage.setItem('publicAuthorId', publicationAuthorId); // Сохранение ID автора публикации
+                
+                console.log("id автора в хранилище ", publicationAuthorId);
+
+                window.location.href = 'userPage.html';
+
+           
+        });
+
+
 
     // Создаем модальное окно
     var modal = document.createElement('div');
@@ -76,12 +92,12 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     var paragraph2 = document.createElement('p');
     paragraph2.textContent = '2. Оставьте все политические и религиозные споры за дверью.\n ' +
-    'Это научно - образовательная платформа и мы хотим что бы каждому здесь было комфортно. ' + 
-    'Мы понимаем что у каждого свое мировоззрение и  убеждения и не преследуем цели навязать вам иное, мы лишь хотим избежать неприятных конфликтов и споров';
+        'Это научно - образовательная платформа и мы хотим что бы каждому здесь было комфортно. ' +
+        'Мы понимаем что у каждого свое мировоззрение и  убеждения и не преследуем цели навязать вам иное, мы лишь хотим избежать неприятных конфликтов и споров';
 
     var paragraph3 = document.createElement('p');
     paragraph3.textContent = '3. Достоверный контент.\n  Пожалуйста публикуйте только проверенный контент, ' +
-                        'не пишите вымысел или недоставерную информацию. Не вводите в заблуждение других людей';
+        'не пишите вымысел или недоставерную информацию. Не вводите в заблуждение других людей';
 
 
     // Добавляем элементы в модальное окно

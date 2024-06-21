@@ -73,13 +73,16 @@
                         </div>
                         <div class="linkAndImg">
                             <img src="img/settings.svg" />
-                            <a href="./settings.html">Настройки</a>
+                            <a href="./settings.html">Настройки</a> 
                         </div>
                         <div class="linkAndImg">
                             <img src="img/rules_list.svg" />
-                            <a href="#">Правила форума</a>
+                            <a id="modalWinRules" class="modalWinRules">Правила форума</a>
                         </div>
                         <Button class='btnToAutoris' id="logoutButton">Выйти </Button>
+
+                        <p class="btnToAutoris">Наша почта <br>
+                            ai.house@inbox.ru</p>
                     </div>
                 </div>
             </div>
@@ -192,7 +195,8 @@
                                 <label class="toggle-switch">
                                     <input type="checkbox" id="techNotif">
                                     <span class="slider"></span>
-                                </label>                            </td>
+                                </label>
+                            </td>
                         </tr>
                         <tr>
                             <td class="underTd">Уведомления об обновлениях, новых версиях и т.д.</td>
@@ -207,7 +211,8 @@
                                 <label class="toggle-switch">
                                     <input type="checkbox" id="refNotif">
                                     <span class="slider"></span>
-                                </label>                            </td>
+                                </label>
+                            </td>
                         </tr>
                         <tr>
                             <td class="underTd">Уведомления об упоминании другими пользователями</td>
@@ -222,7 +227,8 @@
                                 <label class="toggle-switch">
                                     <input type="checkbox" id="respNotif">
                                     <span class="slider"></span>
-                                </label>                            </td>
+                                </label>
+                            </td>
                         </tr>
                         <tr>
                             <td class="underTd">Уведомления об ответах других пользователей на ваши сообщения</td>
@@ -237,7 +243,8 @@
                                 <label class="toggle-switch">
                                     <input type="checkbox" id="subNotif">
                                     <span class="slider"></span>
-                                </label>                            </td>
+                                </label>
+                            </td>
                         </tr>
                         <tr>
                             <td class="underTd">Уведомления о том, что кто-то на вас подписался</td>
@@ -252,7 +259,8 @@
                                 <label class="toggle-switch">
                                     <input type="checkbox" id="likeNotif">
                                     <span class="slider"></span>
-                                </label>                            </td>
+                                </label>
+                            </td>
                         </tr>
                         <tr>
                             <td class="underTd">Уведомления о том что ваш пост оценили</td>
@@ -267,7 +275,8 @@
                                 <label class="toggle-switch">
                                     <input type="checkbox" id="comNotif">
                                     <span class="slider"></span>
-                                </label>                            </td>
+                                </label>
+                            </td>
                         </tr>
                         <tr>
                             <td class="underTd">Уведомления о том, что кто-то оставил ответ на ваш комментарий или

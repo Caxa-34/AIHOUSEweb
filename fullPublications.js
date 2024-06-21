@@ -76,6 +76,9 @@ document.addEventListener('DOMContentLoaded', async function () {
         pubText.innerHTML = formatTextForHtml(publication.text);
         document.getElementById('countLikes').textContent = publication.countLikes; // Количество лайков
 
+        const baseUrl = 'http://94.228.126.25:81';
+            const authorImagePath = `${baseUrl}/${publication.author.imagePath}`;
+document.getElementById('pubImege').src =authorImagePath;
 
         const authorname = document.getElementById('authorName');
         console.log(authorname);
@@ -139,6 +142,50 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.error('Error fetching full publication:', error);
         alert("Кажется возникла ошибка при загрузке полной публикации.");
     }
+});
+
+//жалобы
+
+document.getElementById('complaints').addEventListener('click', async function (event) {
+    //event.preventDefault();
+
+    const idViolation = document.getElementById('selectComplaints').value;
+    console.log(idViolation);
+
+    const idUser = localStorage.getItem('id');
+    console.log(idUser);
+
+    const idPublication = localStorage.getItem('publicId');
+    console.log(idPublication);
+
+    const formData = {
+        idUser: idUser,
+        idPublication: idPublication, 
+        idViolation: idViolation
+    }
+
+    try{
+        const response = await fetch('http://94.228.126.25:3210/api/complaints/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+
+        console.log(`Response status: ${response.status}`);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch publication: ${response.statusText}`);
+        }
+
+        const res = await response.json();
+        console.log("результат", res);
+
+    } catch{
+       // console.error('Error fetching full publication:', error);
+        alert("Кажется возникла ошибка при отправке жалобы.");
+    }
+
 });
 
 
