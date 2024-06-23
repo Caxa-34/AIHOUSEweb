@@ -12,6 +12,23 @@ function formatDate(dateString) {
 
 // сделать приветственное сообщение при авторизации
 
+ // Функция для показа уведомления
+ function showNotification(message) {
+
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+
+    document.body.appendChild(notification);
+    // Показ уведомления
+    notification.style.display = 'block';
+
+    setTimeout(() => {
+        notification.style.display = 'none';
+        document.body.removeChild(notification);
+    }, 2000);
+};
+
 document.addEventListener('DOMContentLoaded', async function () {
 
     const userId = localStorage.getItem('id'); // Получение ID авторизованного пользователя из localStorage
@@ -50,7 +67,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         publicationContainer.innerHTML = '';
 
         // Загружаем лайки из localStorage
-        const likedPublications = JSON.parse(localStorage.getItem('likedPublications')) || {};
+        //const likedPublications = JSON.parse(localStorage.getItem('likedPublications')) || {};
        
         publications.forEach(publication => {
             let text = publication.text;
@@ -69,11 +86,15 @@ document.addEventListener('DOMContentLoaded', async function () {
             //Проверка, был ли лайк установлен
             const isLiked = publication.isSetLike;
 
+            //Проверка, была ли подписка
+            const isSubscribed = publication.isSetSubscribe;
+
             // Выбираем картинку для лайка в зависимости от состояния
             const likeImageSrc = publication.isSetLike ? 'img/unlike.svg' : 'img/like.svg';
-            
+            const SubscrybeImageSrc = publication.isSetSubscribe ? 'img/unsubscribe.svg' : 'img/subscribe.svg';
             const readImageSrc = publication.isRead ? 'img/read.svg' : 'img/unread.svg';
  
+
 
             const baseUrl = 'http://94.228.126.25:81';
             const authorImagePath = `${baseUrl}/${publication.author.imagePath}`;
@@ -96,7 +117,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 <div class="actionPanel">
                     <button id="likked" type="button" class="like" data-publication-id="${publication.id}" data-liked="${isLiked}"><img id="likeBtn" src="${likeImageSrc}"></button> 
                     <p class="countLikes">${publication.countLikes}</p>
-                    <button type="button" class="addSubscribe" id="addSubscribe"><img src="img/subscribe.svg"></button> 
+                    <button type="button" class="addSubscribe" id="addSubscribe" data-author-id="${publication.author.id}" data-subscribed="${isSubscribed}"><img src="${SubscrybeImageSrc}"></button> 
                     <img src="${readImageSrc}" class="addSubscribe" id="readMarcer" data-publication-id="${publication.id}">
                 </div>
             </div>
@@ -155,7 +176,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                 console.log(publicationId);
                 console.log("проверка установки лайка  " + isLiked);
-                console.log("лайк из licalStorage  " + likedPublications);
+                console.log("type  " + type);
 
                 try {
                     const likeResponse = await fetch('http://94.228.126.25:3210/api/publications/like', {
@@ -192,7 +213,54 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                 } catch (error) {
                     console.error('Error updating like status:', error);
-                    alert("Ошибка при обновлении статуса лайка");
+                    showNotification("Установка лайка не возможна");
+                }
+            });
+        });
+
+
+               //установка подписки
+        // Обработчик для подписок
+        document.querySelectorAll('.addSubscribe').forEach(button => {
+            button.addEventListener('click', async function () {
+
+                const idAuthor = this.getAttribute('data-author-id');
+                const isSubscribed = this.getAttribute('data-subscribed') === 'true';
+                const type = isSubscribed ? 'unsubscribe' : 'subscribe';
+
+                console.log(idAuthor);
+                console.log("проверка установки подписки  " + isSubscribed);
+                console.log("type  " + type);
+
+                try {
+                    const likeResponse = await fetch('http://94.228.126.25:3210/api/users/subscribe', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            idUser: userId,
+                            idAuthor: idAuthor,
+                            type: type
+                        })
+                    });
+
+                    if (!likeResponse.ok) {
+                        throw new Error(`Network response was not ok: ${likeResponse.statusText}`);
+                    }
+
+
+
+                    // Обновляем состояние лайка
+                    const newSubscribedState = !isSubscribed;
+            this.setAttribute('data-subscribed', newSubscribedState.toString());
+            const subImg = this.querySelector('img');
+            subImg.src = newSubscribedState ? 'img/unsubscribe.svg' : 'img/subscribe.svg';
+                    
+
+                } catch (error) {
+                    console.error('Error updating subscribe status:', error);
+                    showNotification("Подписка не возможна");
                 }
             });
         });

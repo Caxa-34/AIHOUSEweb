@@ -11,7 +11,7 @@ function formatDate(dateString) {
 document.addEventListener('DOMContentLoaded', async function () {
     const userId = localStorage.getItem('id');
     console.log(`Fetching publications for userId: ${userId}`);
-
+ 
     const formData = { idUser: userId };
 
     console.log('Хранилище: ' + localStorage.id);
@@ -44,8 +44,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
 
         const publicationContainer = document.getElementById('myPubContent');
-       // publicationContainer.innerHTML = '';
-
+        publicationContainer.innerHTML = '';
 
         if(publications == 0)
             {
@@ -71,11 +70,12 @@ document.addEventListener('DOMContentLoaded', async function () {
           
             const formattedDate = formatDate(publication.dateCreate);
 
+
             // Создаем шаблон для каждой публикации
             const publicationTemplate = `
                 <div class="pub">
                     <div class="heads">
-                        <img class="pubImege" src="img/user_icon.png">
+                        
                         <div class="headerPub">
                             <p class="dateAdd">${formattedDate}</p>
                             <div class="likes">

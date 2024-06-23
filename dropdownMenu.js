@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 const notificatoinTemplate = `
                  <div class="notification-container ${borderColorClass}" id="notification-container" data-id="${notificatoin.id}">
                         
-                    <p id="textTitle" class="titleNotification">${notificatoin.title} ${notificatoin.id}</p>
+                    <p id="textTitle" class="titleNotification">${notificatoin.title}</p>
                     <p id="textPost" class="textNotification" >${notificatoin.text}</p>
                     <p class="dateCreateNotif">${formattedDate}</p>
                     <p class= statusNotif>${status}</p>
