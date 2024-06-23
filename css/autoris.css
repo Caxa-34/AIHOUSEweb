@@ -106,6 +106,7 @@ input[type=password] {
     box-sizing: border-box;
 }
 
+
 .name {
     background-image: url('../img/no_user.svg');
     background-position: 2% 50%;
@@ -116,13 +117,13 @@ input[type=password] {
     background-image: url('../img/lock.svg');
     background-position: 2% 50%;
     background-repeat: no-repeat;
+    
 }
 
 .checkBoxLine {
     display: flex;
     flex-direction: row;
     position: relative;
-    justify-content: space-between;
     margin-top: 1.5rem;
 
     text-align: center;
@@ -217,13 +218,14 @@ input[type="checkbox"]:checked {
     input[type=text], input[type=password] {
         width: 100%; /* Растягиваем поля ввода на всю ширину */
         font-size: 1rem; /* Уменьшаем размер шрифта */
-        padding-left: 1.5rem; /* Уменьшаем отступ слева */
+        padding-left: 45px; /* Уменьшаем отступ слева */
     }
 
     .checkBoxLine {
         flex-direction: column; /* Изменяем направление на колонку */
         margin-left: 1rem;
         margin-top: 1rem; /* Уменьшаем отступ сверху */
+        align-items: start;
     }
 
     .labelCheck {
