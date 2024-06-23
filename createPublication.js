@@ -11,9 +11,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+document.addEventListener('DOMContentLoaded', async function () {
+    console.log("id в хранилище " + localStorage.getItem('draftId') + " " + localStorage.getItem('draftTitle') + " " + localStorage.getItem('draftText'));
+
+
+    const createPub = document.getElementById('createPubBtn');
+    createPub.addEventListener('click', function(){
+        localStorage.removeItem('draftId', null);
+        localStorage.removeItem('draftTitle', null);
+        localStorage.removeItem('draftText', null);
+
+    });
 
 document.getElementById('publicate').addEventListener('click', async function (event) {
-    event.preventDefault(); // Предотвращаем отправку формы
+
+ event.preventDefault(); // Предотвращаем отправку формы
 
 
     // Собираем данные формы
@@ -56,7 +68,7 @@ document.getElementById('publicate').addEventListener('click', async function (e
 
             console.error('Ошибка:', response.status, errorText);
 
-            alert('Кажется ри создании публикации возникла ошибка: ' + response.status + ' ' + errorText);
+            alert('Кажется при создании публикации возникла ошибка: ' + response.status + ' ' + errorText);
             return;
         }
 
@@ -64,6 +76,9 @@ document.getElementById('publicate').addEventListener('click', async function (e
         console.log('Ответ от сервера:', data); // Выводим ответ в консоль
         alert('Ура! Публикация успешно создана!');
 
+        localStorage.removeItem('draftId', null);
+        localStorage.removeItem('draftTitle', null);
+        localStorage.removeItem('draftText', null);
         location.reload();
 
 
@@ -189,4 +204,5 @@ document.getElementById('saveAsDraft').addEventListener('click', async function 
                 alert('Кажется при создании черновика возникла ошибка');
             }
         }
+});
 });

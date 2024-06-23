@@ -12,8 +12,8 @@ function formatDate(dateString) {
 
 // сделать приветственное сообщение при авторизации
 
- // Функция для показа уведомления
- function showNotification(message) {
+// Функция для показа уведомления
+function showNotification(message) {
 
     const notification = document.createElement('div');
     notification.className = 'notification';
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             throw new Error(`Network response was not ok: ${response.statusText}`);
         }
         const responsePub = await response.json();
-        const publications = responsePub.publications;
+        let publications = responsePub.publications;
 
         publications.sort((a, b) => {
             return new Date(b.dateCreate) - new Date(a.dateCreate);
@@ -66,43 +66,48 @@ document.addEventListener('DOMContentLoaded', async function () {
         const publicationContainer = document.getElementById('containerPublication');
         publicationContainer.innerHTML = '';
 
-        // Загружаем лайки из localStorage
-        //const likedPublications = JSON.parse(localStorage.getItem('likedPublications')) || {};
-       
-        publications.forEach(publication => {
-            let text = publication.text;
-            // Обрезаем текст до 210 символов, если он длиннее
-            let truncatedText = '';
-            let wordsCount = text.split(/\s+/);
-            if (wordsCount.length > 30) {
-                truncatedText = text.split(/\s+/).slice(0, 30).join(' ') + '...';
-            }
-            else {
-                truncatedText = text.split(/\s+/).slice(0, 30).join(' ');
+        function renderPublications(publications) {
+            publicationContainer.innerHTML = '';
+
+            if (publications.length === 0) {
+                showNotification('Совпадений не найдено'); // Если публикаций нет
+                return;
             }
 
-            const formattedDate = formatDate(publication.dateCreate);
+            publications.forEach(publication => {
+                let text = publication.text;
+                // Обрезаем текст до 210 символов, если он длиннее
+                let truncatedText = '';
+                let wordsCount = text.split(/\s+/);
+                if (wordsCount.length > 30) {
+                    truncatedText = text.split(/\s+/).slice(0, 30).join(' ') + '...';
+                }
+                else {
+                    truncatedText = text.split(/\s+/).slice(0, 30).join(' ');
+                }
 
-            //Проверка, был ли лайк установлен
-            const isLiked = publication.isSetLike;
+                const formattedDate = formatDate(publication.dateCreate);
 
-            //Проверка, была ли подписка
-            const isSubscribed = publication.isSetSubscribe;
+                //Проверка, был ли лайк установлен
+                const isLiked = publication.isSetLike;
 
-            // Выбираем картинку для лайка в зависимости от состояния
-            const likeImageSrc = publication.isSetLike ? 'img/unlike.svg' : 'img/like.svg';
-            const SubscrybeImageSrc = publication.isSetSubscribe ? 'img/unsubscribe.svg' : 'img/subscribe.svg';
-            const readImageSrc = publication.isRead ? 'img/read.svg' : 'img/unread.svg';
- 
+                //Проверка, была ли подписка
+                const isSubscribed = publication.isSetSubscribe;
+
+                // Выбираем картинку для лайка в зависимости от состояния
+                const likeImageSrc = publication.isSetLike ? 'img/unlike.svg' : 'img/like.svg';
+                const SubscrybeImageSrc = publication.isSetSubscribe ? 'img/unsubscribe.svg' : 'img/subscribe.svg';
+                const readImageSrc = publication.isRead ? 'img/read.svg' : 'img/unread.svg';
 
 
-            const baseUrl = 'http://94.228.126.25:81';
-            const authorImagePath = `${baseUrl}/${publication.author.imagePath}`;
-            console.log(authorImagePath);
 
-          
-            // Создаем шаблон для каждой публикации
-            const publicationTemplate = `
+                const baseUrl = 'http://94.228.126.25:81';
+                const authorImagePath = `${baseUrl}/${publication.author.imagePath}`;
+                console.log(authorImagePath);
+
+
+                // Создаем шаблон для каждой публикации
+                const publicationTemplate = `
              <div class="pub">
                 <div class=heads>
                     <img class="pubImege" src="${authorImagePath}">
@@ -123,48 +128,115 @@ document.addEventListener('DOMContentLoaded', async function () {
             </div>
          `;
 
-            // Добавляем шаблон публикации в контейнер
-            publicationContainer.insertAdjacentHTML('beforeend', publicationTemplate);
+                // Добавляем шаблон публикации в контейнер
+                publicationContainer.insertAdjacentHTML('beforeend', publicationTemplate);
 
-           
-        });
-
-        const AutorInfo = document.querySelectorAll('.authorName');
-
-        AutorInfo.forEach(element => {
-            element.addEventListener('click', function () {
-                const publicationAuthorId = this.getAttribute('data-author-id');
-                
-                localStorage.setItem('publicAuthorId', publicationAuthorId); // Сохранение ID автора публикации
-                
-                console.log("id автора в хранилище ", publicationAuthorId);
-
-                window.location.href = 'userPage.html';
 
             });
-        });
 
-        const publicationElements = document.querySelectorAll('.readMore');
+            const AutorInfo = document.querySelectorAll('.authorName');
 
-        publicationElements.forEach(element => {
-            element.addEventListener('click', function () {
-                const publicationIdforRead = this.getAttribute('data-publication-id');
-                const publicationTitleforRead = this.getAttribute('data-title');
-                const publicationTextforRead = this.getAttribute('data-title');
+            AutorInfo.forEach(element => {
+                element.addEventListener('click', function () {
+                    const publicationAuthorId = this.getAttribute('data-author-id');
 
-                localStorage.setItem('publicId', publicationIdforRead); // Сохранение ID публикации
-                localStorage.setItem('publicTitle', publicationTitleforRead); 
-                localStorage.setItem('publicText', publicationTextforRead); 
-                console.log("id в хранилище " + localStorage.getItem('publicId'));
+                    localStorage.setItem('publicAuthorId', publicationAuthorId); // Сохранение ID автора публикации
 
-                const isLike = this.getAttribute('data-liked')
-                localStorage.setItem('isLiked', isLike);
-                console.log(localStorage.getItem('isLiked'));
+                    console.log("id автора в хранилище ", publicationAuthorId);
 
-                window.location.href = 'fullPublication.html';
+                    window.location.href = 'userPage.html';
 
+                });
             });
+
+
+            const publicationElements = document.querySelectorAll('.readMore');
+
+            publicationElements.forEach(element => {
+                element.addEventListener('click', function () {
+                    const publicationIdforRead = this.getAttribute('data-publication-id');
+                    const publicationTitleforRead = this.getAttribute('data-title');
+                    const publicationTextforRead = this.getAttribute('data-title');
+
+                    localStorage.setItem('publicId', publicationIdforRead); // Сохранение ID публикации
+                    localStorage.setItem('publicTitle', publicationTitleforRead);
+                    localStorage.setItem('publicText', publicationTextforRead);
+                    console.log("id в хранилище " + localStorage.getItem('publicId'));
+
+                    const isLike = this.getAttribute('data-liked')
+                    localStorage.setItem('isLiked', isLike);
+                    console.log(localStorage.getItem('isLiked'));
+
+                    window.location.href = 'fullPublication.html';
+
+                });
+            });
+
+        }
+
+        renderPublications(publications);
+
+        // Функция поиска публикаций по имени автора и заголовку
+
+
+        const btnAll = document.getElementById('btnAll');
+        const btnPub = document.getElementById('btnPub');
+        const btnUs = document.getElementById('btnUs');
+
+
+        const searchInput = document.getElementById('searchText');
+        const filters = document.getElementById('searchText');
+        const filter = document.getElementById('filters');
+
+        filters.addEventListener('input', async function () {
+
+            if (searchInput.value.trim().length > 0) {
+                filter.style.display = 'block';
+
+                btnAll.addEventListener('click', async function () {
+
+                    const searchText = document.getElementById('searchText').value.trim().toLowerCase();
+                    const filteredPublications = publications.filter(pub => {
+                        return pub.title.toLowerCase().includes(searchText) || 
+                        pub.text.toLowerCase().includes(searchText) || pub.author.name.toLowerCase().includes(searchText) 
+                        || pub.author.id.toString().toLowerCase().includes(searchText);
+                    });
+                    renderPublications(filteredPublications);
+
+                });
+
+                btnPub.addEventListener('click', async function () {
+                    
+                    const searchText = document.getElementById('searchText').value.trim().toLowerCase();
+                    const filteredPublications = publications.filter(pub => {
+                        return pub.title.toLowerCase().includes(searchText) || 
+                        pub.text.toLowerCase().includes(searchText);
+                    });
+                    renderPublications(filteredPublications);
+                });
+
+                btnUs.addEventListener('click', async function () {
+                   
+                    const searchText = document.getElementById('searchText').value.trim().toLowerCase();
+                    const filteredPublications = publications.filter(pub => {
+                        return pub.author.name.toLowerCase().includes(searchText) 
+                        || pub.author.id.toString().toLowerCase().includes(searchText);
+                    });
+                    renderPublications(filteredPublications);
+                  
+                });
+
+            }
+            else {
+                filter.style.display = 'none';
+                renderPublications(publications);
+            }
         });
+
+        // Добавление обработчика события на кнопку поиска
+        //  document.getElementById('searchText').addEventListener('input', searchScorePublication);
+
+
 
         //установка лайка
         // Обработчик для лайков
@@ -209,7 +281,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     const currentLikes = parseInt(countLikesElement.textContent, 10);
                     countLikesElement.textContent = newLikedState ? currentLikes + 1 : currentLikes - 1;
 
-            
+
 
                 } catch (error) {
                     console.error('Error updating like status:', error);
@@ -219,7 +291,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
 
 
-               //установка подписки
+        //установка подписки
         // Обработчик для подписок
         document.querySelectorAll('.addSubscribe').forEach(button => {
             button.addEventListener('click', async function () {
@@ -253,10 +325,10 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                     // Обновляем состояние лайка
                     const newSubscribedState = !isSubscribed;
-            this.setAttribute('data-subscribed', newSubscribedState.toString());
-            const subImg = this.querySelector('img');
-            subImg.src = newSubscribedState ? 'img/unsubscribe.svg' : 'img/subscribe.svg';
-                    
+                    this.setAttribute('data-subscribed', newSubscribedState.toString());
+                    const subImg = this.querySelector('img');
+                    subImg.src = newSubscribedState ? 'img/unsubscribe.svg' : 'img/subscribe.svg';
+
 
                 } catch (error) {
                     console.error('Error updating subscribe status:', error);

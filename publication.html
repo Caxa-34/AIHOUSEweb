@@ -133,13 +133,13 @@
       <!--Поиск-->
       <div>
         <input type="text" class="search" id="searchText" placeholder="введите название темы или пользователя" />
-        <button onclick="searchScorePublication()" id="searchElement">Искать</button>
       </div>
 
-      <!--<div class="filters"> 
-              <button class="btnFilters" >публикации</button>
-              <button class="btnFilters" >пользователи</button>
-            </div>-->
+      <div class="filters" id="filters"> 
+        <button class="btnFilters" id="btnAll" autofocus>все</button>
+              <button class="btnFilters" id="btnPub">публикации</button>
+              <button class="btnFilters" id="btnUs">пользователи</button>
+            </div>
       <!--Окно с публикациями-->
       <div>
         <p class="title">Публикации</p>

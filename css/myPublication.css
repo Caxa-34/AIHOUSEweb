@@ -140,6 +140,14 @@ input[type=text]
 .actionPanel
 {
     margin-bottom: 1rem;
+    display: flex;
+    vertical-align: middle;
+
+}
+.delete
+{
+
+    margin-left: auto;
 }
 .likes
 {
@@ -157,7 +165,6 @@ input[type=text]
     color: #A4A4B2;
 }
 
-
 .readMore
 {
     margin-bottom: 1rem;
@@ -165,4 +172,5 @@ input[type=text]
     font-family: Inter;   
     font-size: 1.4rem;
     font-weight: 400;
+    margin: auto 2px;
 }

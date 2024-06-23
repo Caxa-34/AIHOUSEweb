@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         const publicationContainer = document.getElementById('myPubContentDraft');
         publicationContainer.innerHTML = '';
 
-
         
         if(drafts == 0)
             {
@@ -60,10 +59,18 @@ document.addEventListener('DOMContentLoaded', async function () {
             }
             else{
                 publicationContainer.innerHTML = '';
-               
+                
             }
-
-
+            
+            
+            function renderPublications(drafts) {
+                publicationContainer.innerHTML = '';
+    
+    
+                if (drafts.length === 0) {
+                    publicationContainer.innerHTML = '<p>Ничего нет</p>'; // Если публикаций нет
+                    return;
+                }
         drafts.forEach(draft => {
             let text = draft.text;
             // Обрезаем текст до 210 символов, если он длиннее
@@ -90,9 +97,6 @@ document.addEventListener('DOMContentLoaded', async function () {
             // Добавляем шаблон публикации в контейнер
             publicationContainer.insertAdjacentHTML('beforeend', publicationTemplate);
 
-
-
-
             const draftElements = document.querySelectorAll('.readMore');
 
             draftElements.forEach(element => {
@@ -109,13 +113,36 @@ document.addEventListener('DOMContentLoaded', async function () {
                     console.log("id в хранилище " + localStorage.getItem('draftId') + " " + localStorage.getItem('draftTitle') + " " + localStorage.getItem('draftText'));
 
                     window.location.href = 'createPubications.html';
-
-
-
                 });
             });
-
         });
+    }
+
+renderPublications(drafts);
+
+// Функция поиска публикаций по имени автора и заголовку
+function searchScorePublication() {
+    const searchInput = document.getElementById('searchDraft').value.toLowerCase();
+    const searchWords = searchInput.split(/\s+/).filter(word => word.length > 0);
+
+    if (searchWords.length === 0) {
+        // Если строка поиска пуста, отображаем все публикации
+        renderPublications(drafts);
+        return;
+    }
+
+    const filteredPublications = drafts.filter(draft => {
+        const title = draft.title;
+        const text = draft.text;
+
+        return searchWords.some(word => title.includes(word) || text.includes(word));
+    });
+
+    renderPublications(filteredPublications);
+}
+
+// Добавление обработчика события на кнопку поиска
+document.getElementById('searchDraft').addEventListener('input', searchScorePublication);
 
 
     } catch (error) {

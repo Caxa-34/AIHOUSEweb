@@ -40,7 +40,8 @@ input[type=text]
     margin-top: 1.5625rem;
     margin-left: 3rem;
 
-    margin-bottom: 3.125rem;
+    margin-bottom: 3rem;
+    display: none;
 }
 
 .btnFilters
@@ -55,9 +56,10 @@ input[type=text]
     padding-left: 15px;
     padding-right: 15px;
     color: #1B1967;
+    
 }
 
-.btnFilters:active
+.btnFilters.active
 {
     background-color: #1B1967;
     color: #EBF4FF;
