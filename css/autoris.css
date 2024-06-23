@@ -1,74 +1,7 @@
 * {
     overflow: hidden;
 }
-@media screen and (max-width: 768px) {
 
-    .avtorisationWin {
-        width: 100%;
-        height: 100vh;
-    }
-    .autorisationPole {
-        width: 100%; /* Растягиваем на всю ширину */
-        padding: 1rem; /* Добавляем отступы для комфорта */
-        box-sizing: border-box;
-    }
-
-    .rightDiv {
-        width: 0;
-        display: none; /* Скрываем правую часть с изображением */
-    }
-
-    .mainDivAuto {
-        position: static; /* Убираем абсолютное позиционирование */
-        transform: none; /* Убираем трансформацию */
-        width: 100%; /* Растягиваем на всю ширину */
-        padding: 0;
-        margin-top: 2rem;
-    }
-
-    .title {
-        font-size: 2rem; /* Уменьшаем размер заголовка */
-        text-align: center; /* Центрируем текст */
-        margin-bottom: 1rem; /* Добавляем отступ снизу */
-    }
-
-    .inputDiv {
-        width: 100%; /* Растягиваем контейнер для ввода на всю ширину */
-    }
-
-    input[type=text], input[type=password] {
-        width: 100%; /* Растягиваем поля ввода на всю ширину */
-        font-size: 1rem; /* Уменьшаем размер шрифта */
-        padding-left: 1.5rem; /* Уменьшаем отступ слева */
-    }
-
-    .checkBoxLine {
-        flex-direction: column; /* Изменяем направление на колонку */
-        align-items: center; /* Центрируем элементы */
-        margin-top: 1rem; /* Уменьшаем отступ сверху */
-    }
-
-    .labelCheck {
-        margin-bottom: 1rem; /* Добавляем отступ снизу */
-    }
-
-    .btnAutiris {
-        width: 100%; /* Растягиваем кнопку на всю ширину */
-        font-size: 1.2rem; /* Уменьшаем размер шрифта */
-        margin-top: 1rem; /* Уменьшаем отступ сверху */
-    }
-
-    .goToRegistrations {
-        font-size: 1rem; /* Уменьшаем размер шрифта */
-        margin-top: 1rem; /* Уменьшаем отступ сверху */
-        text-align: center; /* Центрируем текст */
-    }
-
-    .logo {
-        text-align: center; /* Центрируем логотип */
-        margin: 2rem auto; /* Уменьшаем отступы */
-    }
-}
 
 
 body {
@@ -242,4 +175,75 @@ input[type="checkbox"]:checked {
 
     align-items: center;
     text-align: center;
+}
+
+
+
+@media screen and (max-width: 768px) {
+
+    .avtorisationWin {
+        width: 100%;
+        height: 100vh;
+    }
+    .autorisationPole {
+        width: 100%; /* Растягиваем на всю ширину */
+        padding: 1rem; /* Добавляем отступы для комфорта */
+        box-sizing: border-box;
+    }
+
+    .rightDiv {
+        width: 0;
+        display: none; /* Скрываем правую часть с изображением */
+    }
+
+    .mainDivAuto {
+        position: static; /* Убираем абсолютное позиционирование */
+        transform: none; /* Убираем трансформацию */
+        width: 100%; /* Растягиваем на всю ширину */
+        padding: 0;
+        margin-top: 2rem;
+    }
+
+    .title {
+        font-size: 2rem; /* Уменьшаем размер заголовка */
+        text-align: center; /* Центрируем текст */
+        margin-bottom: 1rem; /* Добавляем отступ снизу */
+    }
+
+    .inputDiv {
+        width: 100%; /* Растягиваем контейнер для ввода на всю ширину */
+    }
+
+    input[type=text], input[type=password] {
+        width: 100%; /* Растягиваем поля ввода на всю ширину */
+        font-size: 1rem; /* Уменьшаем размер шрифта */
+        padding-left: 1.5rem; /* Уменьшаем отступ слева */
+    }
+
+    .checkBoxLine {
+        flex-direction: column; /* Изменяем направление на колонку */
+        margin-left: 1rem;
+        margin-top: 1rem; /* Уменьшаем отступ сверху */
+    }
+
+    .labelCheck {
+        margin-bottom: 1rem; /* Добавляем отступ снизу */
+    }
+
+    .btnAutiris {
+        width: 100%; /* Растягиваем кнопку на всю ширину */
+        font-size: 1.2rem; /* Уменьшаем размер шрифта */
+        margin-top: 1rem; /* Уменьшаем отступ сверху */
+    }
+
+    .goToRegistrations {
+        font-size: 1rem; /* Уменьшаем размер шрифта */
+        margin-top: 1rem; /* Уменьшаем отступ сверху */
+        text-align: center; /* Центрируем текст */
+    }
+
+    .logo {
+        text-align: center; /* Центрируем логотип */
+        margin: 2rem auto; /* Уменьшаем отступы */
+    }
 }

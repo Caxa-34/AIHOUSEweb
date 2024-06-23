@@ -23,9 +23,8 @@
 
                 <div class="inputDiv">
                     <input type="email" class="email" placeholder="Email" id="tbEmail" name="email" required>
-                    <input type="text" class="name" placeholder="Имя пользователя" id="tbUsername" name="nameUser"
-                        required>
-                    <input type="password" class="pass" placeholder="Пароль" id="tbPassword" name="password" required>
+                    <input type="text" class="text" placeholder="Имя пользователя" id="tbUsername" name="nameUser" required>
+                    <input type="password" class="password" placeholder="Пароль" id="tbPassword" name="password" required>
 
                     <div class="checkBoxLine">
                         <div>
@@ -54,41 +53,42 @@
                 </div>
             </div>
             <!--модальное окно-->
-            <div id="rulesModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>Введите код из письма</p>
-                    <textarea wrap="soft" type="text" id="varificText" placeholder="Код" class="varificText" required></textarea>
-
-                    <h2>Правила</h2>
-                    <p>1. Избегайте оскорблений в чужой адрес. Здесь мы все друзья и мы не хотим никаких
-                         конфликтов и обид, так что давайте будем относиться к друг другу с пониманием и уважением</p>
-                    <p>2. Оставьте все политические и религиозные споры за дверью. Это научно - образовательная платформа и мы хотим что бы каждому здесь было комфортно. Мы понимаем что у каждого свое 
-                        мировоззрение и  убеждения и не преследуем цели навязать вам иное, 
-                        мы лишь хотим избежать неприятных конфликтов и споров</p>
-                    <p>3. Достоверный контент. Пожалуйста публикуйте только проверенный контент, 
-                        не пишите вымысел или непроверенную информацию. Не вводите в заблуждение других людей</p>
-
-
-                    <!-- Добавьте больше правил по необходимости -->
-                    <button type="button" id="btnAcceptAndRegister" class="btnAutirisModal">Принять и зарегистрироваться</button>
-                </div>
-            </div>
-
-
-
+            
+            
+            
         </form>
-        <script src="login.js"></script>
-        <script>
-           
-        </script>
-
+        <div id="rulesModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Введите код из письма</p>
+                <textarea wrap="soft" type="text" id="varificText" placeholder="Код" class="varificText" required></textarea>
+        
+                <h2>Правила</h2>
+                <p>1. Избегайте оскорблений в чужой адрес. Здесь мы все друзья и мы не хотим никаких
+                    конфликтов и обид, так что давайте будем относиться к друг другу с пониманием и уважением</p>
+                <p>2. Оставьте все политические и религиозные споры за дверью. Это научно - образовательная платформа и мы хотим
+                    что бы каждому здесь было комфортно. Мы понимаем что у каждого свое
+                    мировоззрение и убеждения и не преследуем цели навязать вам иное,
+                    мы лишь хотим избежать неприятных конфликтов и споров</p>
+                <p>3. Достоверный контент. Пожалуйста публикуйте только проверенный контент,
+                    не пишите вымысел или непроверенную информацию. Не вводите в заблуждение других людей</p>
+        
+        
+                <!-- Добавьте больше правил по необходимости -->
+                <button type="button" id="btnAcceptAndRegister" class="btnAutirisModal">Принять и зарегистрироваться</button>
+            </div>
+        </div>
         <div class="rightDiv">
             <img src="img/autorisFon.png">
         </div>
 
 
     </div>
+        <script src="login.js"></script>
+        <script>
+           
+        </script>
+
 </body>
 
 </html>
