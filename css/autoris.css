@@ -1,23 +1,91 @@
-*
-{
+* {
     overflow: hidden;
 }
+@media screen and (max-width: 768px) {
 
-body{
+    .avtorisationWin {
+        width: 100%;
+        height: 100vh;
+    }
+    .autorisationPole {
+        width: 100%; /* Растягиваем на всю ширину */
+        padding: 1rem; /* Добавляем отступы для комфорта */
+        box-sizing: border-box;
+    }
+
+    .rightDiv {
+        width: 0;
+        display: none; /* Скрываем правую часть с изображением */
+    }
+
+    .mainDivAuto {
+        position: static; /* Убираем абсолютное позиционирование */
+        transform: none; /* Убираем трансформацию */
+        width: 100%; /* Растягиваем на всю ширину */
+        padding: 0;
+        margin-top: 2rem;
+    }
+
+    .title {
+        font-size: 2rem; /* Уменьшаем размер заголовка */
+        text-align: center; /* Центрируем текст */
+        margin-bottom: 1rem; /* Добавляем отступ снизу */
+    }
+
+    .inputDiv {
+        width: 100%; /* Растягиваем контейнер для ввода на всю ширину */
+    }
+
+    input[type=text], input[type=password] {
+        width: 100%; /* Растягиваем поля ввода на всю ширину */
+        font-size: 1rem; /* Уменьшаем размер шрифта */
+        padding-left: 1.5rem; /* Уменьшаем отступ слева */
+    }
+
+    .checkBoxLine {
+        flex-direction: column; /* Изменяем направление на колонку */
+        align-items: center; /* Центрируем элементы */
+        margin-top: 1rem; /* Уменьшаем отступ сверху */
+    }
+
+    .labelCheck {
+        margin-bottom: 1rem; /* Добавляем отступ снизу */
+    }
+
+    .btnAutiris {
+        width: 100%; /* Растягиваем кнопку на всю ширину */
+        font-size: 1.2rem; /* Уменьшаем размер шрифта */
+        margin-top: 1rem; /* Уменьшаем отступ сверху */
+    }
+
+    .goToRegistrations {
+        font-size: 1rem; /* Уменьшаем размер шрифта */
+        margin-top: 1rem; /* Уменьшаем отступ сверху */
+        text-align: center; /* Центрируем текст */
+    }
+
+    .logo {
+        text-align: center; /* Центрируем логотип */
+        margin: 2rem auto; /* Уменьшаем отступы */
+    }
+}
+
+
+body {
     width: 100vw;
     height: 100vh;
     padding: 0;
     margin: 0;
 }
 
-.logo{
+.logo {
     margin-left: 3rem;
     margin-top: 3rem;
     width: 85%;
     margin: 3rem auto;
 }
-.logo a
-{
+
+.logo a {
     font-family: Montserrat, sans-serif;
     font-size: 1.55rem;
     color: #285680;
@@ -25,81 +93,72 @@ body{
     text-decoration: none;
 }
 
-.title
-{
+.title {
     font-family: Inter;
     font-size: 3.2rem;
     font-weight: 600;
     color: #1B1967;
 }
 
-.avtorisationWin
-{
+.avtorisationWin {
     display: flex;
-    width: 100vw; /* Ширина контейнера 100% от окна */
+    width: 100vw;
     height: 100vh;
-
-
 }
 
 
-.autorisationPole
-{
+.autorisationPole {
     width: 44%;
     display: flex;
     flex-direction: column;
     position: relative;
 }
-.mainDivAuto
-{
+
+.mainDivAuto {
     flex-direction: column;
     width: 85%;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
 }
 
-.autorisType
-{
+.autorisType {
     border: 1px solid #1B1967;
     border-radius: 15px;
     height: 3.2rem;
 
     display: flex;
     flex-direction: column;
-    
+
     align-items: stretch;
 }
-.autorisType button
-{
+
+.autorisType button {
     margin: 0;
-    
+
     height: 100%;
 }
 
-.inputDiv
-{
+.inputDiv {
     display: flex;
     flex-direction: column;
-    
+
 }
 
-.rightDiv
-{
+.rightDiv {
     width: 56%;
     height: 100vh;
 }
 
-img
-{
+img {
     width: 100%;
     height: 100%;
 }
 
 
-input[type=text], input[type=password]
-{
+input[type=text],
+input[type=password] {
     width: 100%;
     height: 5rem;
     border-radius: 15px;
@@ -113,21 +172,20 @@ input[type=text], input[type=password]
 
     box-sizing: border-box;
 }
-.name
-{
+
+.name {
     background-image: url('../img/no_user.svg');
     background-position: 2% 50%;
     background-repeat: no-repeat;
 }
-.pass
-{
+
+.pass {
     background-image: url('../img/lock.svg');
     background-position: 2% 50%;
     background-repeat: no-repeat;
 }
 
-.checkBoxLine
-{
+.checkBoxLine {
     display: flex;
     flex-direction: row;
     position: relative;
@@ -137,33 +195,32 @@ input[type=text], input[type=password]
     text-align: center;
 
 }
-input[type="checkbox"]
-{ 
-	width: 20px;
-	height: 20px;
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
     vertical-align: middle;
 }
-input[type="checkbox"]:checked
-{
+
+input[type="checkbox"]:checked {
     background-color: #555555;
 }
 
-.labelCheck
-{
+.labelCheck {
     font-family: Inter;
     font-size: 0.8rem;
     vertical-align: middle;
 }
-.returnPass
-{
+
+.returnPass {
     margin: auto 0;
     text-decoration: none;
     font-family: Inter;
     font-size: 0.9rem;
     color: #A7A7A7;
 }
-.btnAutiris
-{
+
+.btnAutiris {
     width: 100%;
     height: 60px;
     margin-top: 1.5rem;
@@ -174,16 +231,15 @@ input[type="checkbox"]:checked
     font-size: 1.5rem;
     font-weight: 600;
 }
-.goToRegistrations
-{
+
+.goToRegistrations {
     font-family: Inter;
     font-size: 1.2rem;
     font-weight: 600;
 
     margin-top: 1.2rem;
     color: #1B1967;
-    
+
     align-items: center;
     text-align: center;
 }
-
