@@ -92,24 +92,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             }, 2000);
         };
 
-        // Функция, которая сработает при клике
-        function handleClick() {
-            // Пример действия: копирование текста ID в буфер обмена
-            const userIdElement = document.getElementById('userid');
-            const userId = userIdElement.textContent;
-            navigator.clipboard.writeText(userId)
-                .then(() => {
-                    showNotification('ID скопирован в буфер обмена: ' + userId);
-                })
-                .catch(err => {
-                    showNotification('Ошибка при копировании: ', err);
-                });
-        }
-
-        // Назначение обработчика клика элементу
-        document.getElementById('copyIcons').addEventListener('click', handleClick);
-
-
+       
 
 
         const publicationContainer = document.getElementById('myPubContent');
@@ -167,6 +150,20 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 
 
+         // Инициализация clipboard.js
+         const clipboard = new ClipboardJS('#copy-button');
+
+         // Успешное копирование
+         clipboard.on('success', function(e) {
+             showNotification('ID скопирован в буфер обмена: ' + e.text);
+             e.clearSelection(); // Деселектировать текст
+         });
+ 
+         // Ошибка при копировании
+         clipboard.on('error', function(e) {
+             showNotification('Ошибка при копировании: ' + e.action);
+         });
+ 
 
     } catch (error) {
         console.error('Error fetching publications:', error);

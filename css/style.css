@@ -8,7 +8,7 @@
     margin-right: 0;
     border: 1px solid white;
     margin-left: calc(20% + 4px);
-    border: #D1D6DA solid 1px;
+    border-left: #D1D6DA solid 1px;
     box-sizing: border-box;
 }
 

@@ -3,11 +3,13 @@
 /* стили основного контента (публикаций)*/
 .cont
 {
-    height: 100%;
     width: 79%;
     margin-top: 0;
     margin-right: 0;
     margin-left: calc(20% + 4px);
+    height: 100vh;
+    border: 1px white solid;
+    border-left: #D1D6DA solid 1px;
 }
 
 /*стили поиска*/

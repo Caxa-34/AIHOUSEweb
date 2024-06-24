@@ -10,6 +10,27 @@ function formatDate(dateString) {
     return `${year}.${month}.${day} ${hours}:${minutes}`;
 }
 
+function loadScript(url, callback) {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+
+    // Обработчик события для завершения загрузки скрипта
+    script.onload = function () {
+        if (callback) {
+            callback();
+        }
+    };
+
+    // Обработка ошибок при загрузке скрипта
+    script.onerror = function () {
+        console.error('Ошибка загрузки скрипта: ' + url);
+    };
+
+    // Добавляем скрипт в тело документа
+    document.body.appendChild(script);
+}
+
 document.addEventListener('DOMContentLoaded', async function () {
 
 
@@ -158,17 +179,23 @@ document.addEventListener('DOMContentLoaded', async function () {
         }, 2000);
     };
 
-    if (copyIcon && userTextElement) {
-        copyIcon.addEventListener("click", () => {
-            const textToCopy = userTextElement.innerText;
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                showNotification('Текст скопирован!'); // Показать уведомление
-            }).catch(err => {
-                console.error('Не удалось скопировать текст: ', err);
-                showNotification('Ошибка копирования'); // Показать уведомление об ошибке
+  
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js', function () {
+            // Инициализация clipboard.js
+            const clipboard = new ClipboardJS('#copyIcon');
+
+            // Успешное копирование
+            clipboard.on('success', function (e) {
+                showNotification('ID скопирован в буфер обмена: ' + e.text);
+                e.clearSelection(); // Деселектировать текст
+            });
+
+            // Ошибка при копировании
+            clipboard.on('error', function (e) {
+                showNotification('Ошибка при копировании: ' + e.action);
             });
         });
-    }
+
 
     //вывод окна уведомлений
     const dropdownIconNotif = document.getElementById("notifImg");
@@ -323,14 +350,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     });
 
-    document.getElementById('sideBarToggle').addEventListener('click', function () {
-        var nav = document.getElementById('sideBar');
-        if (nav.classList.contains('show')) {
-            nav.classList.remove('show');
-        } else {
-            nav.classList.add('show');
-        }
-    });
+
 
 });
 
