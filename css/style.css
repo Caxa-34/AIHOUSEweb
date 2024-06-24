@@ -4,10 +4,12 @@
 {
     height: 100%;
     width: 79%;
+    min-width: 70%;
     margin-top: 0;
     margin-right: 0;
+    border: 1px solid white;
     margin-left: calc(20% + 4px);
-    border-left: #D1D6DA solid 1px;
+    border: #D1D6DA solid 1px;
     box-sizing: border-box;
 }
 

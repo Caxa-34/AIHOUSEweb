@@ -18,13 +18,17 @@
     <div class="container">
       <div class="headerRow">
         <div class="logo"><a href="./publication.html">AI.HOUSE</a></div>
-        <div class='navigation'>
+
+        <!-- Мобильное меню -->
+        <button class="mobileMenuBtn" id="mobileMenuBtn" aria-label="Открыть меню">&#9776;</button>
+
+        <div class='navigation' id="navigation">
           <!--элементы новигации -->
-          <ui>
+          <ui class="navLinks">
             <li><a href='./chatsAll.html' class='links'>Обсуждения</a></li>
             <li><a href='./publication.html' class='links'>Публикации</a></li>
-            <li> <a href='./createPubications.html' class='butn' id="createPubBtn">Создать публикацию</a></li>
-            <li><a href='./createCtas.html' class='butn' id="createChatsBtn">Создать обсуждение</a></li>
+            <li> <a href='./createPubications.html' class='butn navLink' id="createPubBtn">Создать публикацию</a></li>
+            <li><a href='./createCtas.html' class='butn navLink' id="createChatsBtn">Создать обсуждение</a></li>
           </ui>
         </div>
 
@@ -92,41 +96,47 @@
   <!--основное-->
   <div class="main">
 
-    <!--SideBar (левая часть)-->
-    <div class="sideBar">
-      <div class="sideBarName">
-        <p>Популярные обсуждения</p>
-      </div>
+    <button class="sideBarToggle" id="sideBarToggle" aria-label="Открыть меню">&#9776;</button>
 
-      <!--div для чатов-->
 
-      <div class="chatsInfo">
-        <img src="img/chats_Img.png" class="chatsImgSideBar">
+   
+   <!--SideBar (левая часть)-->
+   <div class="sideBar" id="sideBar">
+     <div class="sideBarName">
+       <p>Популярные обсуждения</p>
+     </div>
 
-        <div class="chatsData">
-          <p class="chatsName">Название чата</p>
-          <p class="chatsCountUser">123 участника</p>
-        </div>
-      </div>
+     <!--div для чатов-->
 
-      <div class="chatsInfo">
-        <img src="img/chats_Img.png" class="chatsImgSideBar">
+     <div class="chatsInfo">
+       <img src="img/chats_Img.png" class="chatsImgSideBar">
 
-        <div class="chatsData">
-          <p class="chatsName">Название чата</p>
-          <p class="chatsCountUser">123 участника</p>
-        </div>
-      </div>
+       <div class="chatsData">
+         <p class="chatsName">Название чата</p>
+         <p class="chatsCountUser">123 участника</p>
+       </div>
+     </div>
 
-      <div class="chatsInfo">
-        <img src="img/chats_Img.png" class="chatsImgSideBar">
+     <div class="chatsInfo">
+       <img src="img/chats_Img.png" class="chatsImgSideBar">
 
-        <div class="chatsData">
-          <p class="chatsName">Название чата</p>
-          <p class="chatsCountUser">123 участника</p>
-        </div>
-      </div>
-    </div>
+       <div class="chatsData">
+         <p class="chatsName">Название чата</p>
+         <p class="chatsCountUser">123 участника</p>
+       </div>
+     </div>
+
+     <div class="chatsInfo">
+       <img src="img/chats_Img.png" class="chatsImgSideBar">
+
+       <div class="chatsData">
+         <p class="chatsName">Название чата</p>
+         <p class="chatsCountUser">123 участника</p>
+       </div>
+     </div>
+   </div>
+     <!-- Кнопка для открытия сайдбара на мобильных устройствах -->
+    
 
     <!--правая часть-->
     <div class="cont">
@@ -135,11 +145,11 @@
         <input type="text" class="search" id="searchText" placeholder="введите название темы или пользователя" />
       </div>
 
-      <div class="filters" id="filters"> 
+      <div class="filters" id="filters">
         <button class="btnFilters" id="btnAll" autofocus>все</button>
-              <button class="btnFilters" id="btnPub">публикации</button>
-              <button class="btnFilters" id="btnUs">пользователи</button>
-            </div>
+        <button class="btnFilters" id="btnPub">публикации</button>
+        <button class="btnFilters" id="btnUs">пользователи</button>
+      </div>
       <!--Окно с публикациями-->
       <div>
         <p class="title">Публикации</p>

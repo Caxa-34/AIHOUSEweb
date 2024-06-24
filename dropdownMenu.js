@@ -51,17 +51,17 @@ document.addEventListener('DOMContentLoaded', async function () {
     //переход на страницу пользователя по клаку на имя пользователя в меню
     const AutorInfo = document.getElementById('userName');
 
-        AutorInfo.addEventListener('click', function() {
-                const publicationAuthorId = localStorage.getItem('id');
-                
-                localStorage.setItem('publicAuthorId', publicationAuthorId); // Сохранение ID автора публикации
-                
-                console.log("id автора в хранилище ", publicationAuthorId);
+    AutorInfo.addEventListener('click', function () {
+        const publicationAuthorId = localStorage.getItem('id');
 
-                window.location.href = 'userPage.html';
+        localStorage.setItem('publicAuthorId', publicationAuthorId); // Сохранение ID автора публикации
 
-           
-        });
+        console.log("id автора в хранилище ", publicationAuthorId);
+
+        window.location.href = 'userPage.html';
+
+
+    });
 
 
 
@@ -313,5 +313,26 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
 
+    //адаптив
+    document.getElementById('mobileMenuBtn').addEventListener('click', function () {
+        var nav = document.getElementById('navigation');
+        if (nav.classList.contains('show')) {
+            nav.classList.remove('show');
+        } else {
+            nav.classList.add('show');
+        }
+    });
+
+    document.getElementById('sideBarToggle').addEventListener('click', function () {
+        var nav = document.getElementById('sideBar');
+        if (nav.classList.contains('show')) {
+            nav.classList.remove('show');
+        } else {
+            nav.classList.add('show');
+        }
+    });
+
 });
+
+
 
