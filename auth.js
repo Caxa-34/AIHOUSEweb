@@ -19,11 +19,17 @@ document.getElementById('autorisationPole').addEventListener('submit', async fun
  
         // Проверяем статус ответа
         if (!response.ok) {
-            const errorText = await response.text();
+            const res = await response.json();
 
-            console.error('Ошибка:', response.status, errorText);
-
-            alert('Ошибка при авторизации: ' + response.status + ' ' + errorText);
+            console.log(res);
+            if(res.message == "UserBanned")
+            {
+                alert("Ваш аккаунт заблокирован");
+            }
+            if(res.message == "InvalidPass" || res.message == "NameExists")
+                {
+                    alert("Ошибка ввода пароля или логина");
+                }
             return;
         }
 

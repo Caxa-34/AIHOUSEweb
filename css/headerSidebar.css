@@ -279,6 +279,7 @@ a {
     padding: 0;
     margin: 12px 2rem;
     text-decoration: none;
+    cursor: default;
 
 }
 

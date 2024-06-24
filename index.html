@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=ё, initial-scale=1.0">
     <link rel="stylesheet" href="css/normolize.css">
-    <link rel="dtylesheets" href="css/style.css">
-
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap"
+        rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <title>AI.HOUSE</title>
 </head>
+
 <body>
-    <button > <a href="./authoris.html">войти</a></button>
+
+    <header>
+        <p class="logo">AI.HOUSE</p>
+        <button class="butn" id="btnEnter">войти</button>
+
+    </header>
+
+    <div class="main">
+        <img src="./img/robot 1.png" />
+        <div class="helloTitle">
+            <p class="one">Добро пожаловать в </p>
+            <p class="two">AI.HOUSE...</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('btnEnter').addEventListener('click', function()
+    {
+        localStorage.setItem('id', 0);
+        window.location.href = 'publication.html';
+    })
+    </script>
 </body>
+
 </html>

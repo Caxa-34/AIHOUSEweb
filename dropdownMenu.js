@@ -197,6 +197,22 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
 
 
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js', function () {
+            // Инициализация clipboard.js
+            const clipboard = new ClipboardJS('#copyEmail');
+
+            // Успешное копирование
+            clipboard.on('success', function (e) {
+                showNotification('ID скопирован в буфер обмена: ' + e.text);
+                e.clearSelection(); // Деселектировать текст
+            });
+
+            // Ошибка при копировании
+            clipboard.on('error', function (e) {
+                showNotification('Ошибка при копировании: ' + e.action);
+            });
+        });
+
     //вывод окна уведомлений
     const dropdownIconNotif = document.getElementById("notifImg");
     const dropdownNotif = document.getElementById("dropdownContentNotifications");

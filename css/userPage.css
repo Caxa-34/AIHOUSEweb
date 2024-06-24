@@ -1,6 +1,6 @@
 /* стили основного контента */
 .cont {
-    height: 100%;
+    height: 100vh;
     width: 79%;
     margin-top: 0;
     margin-right: 0;
@@ -25,15 +25,15 @@
 .UserID {
     display: flex;
     margin: auto 1rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 .UserID p {
     display: flex;
-
     color: #A7A7A7;
     font-weight: 400;
     font-family: Inter;
+    margin: auto 0.1rem;
 
 }
 

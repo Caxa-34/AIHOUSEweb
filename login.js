@@ -21,10 +21,19 @@ document.addEventListener('DOMContentLoaded', async function () {
         };
 
         // Отправляем данные на сервер с помощью fetch
-
         try {
+            console.log(formData);
 
-            if (name.value != "" && password.value != "" && email.value != "") {
+            if (name != '' && password != '' && email != '') {
+
+                // Проверяем, заполнены ли все поля
+                if (name.value === "" || password.value === "" || email.value === "") {
+                    // Если одно из полей пустое, предотвращаем отправку формы
+                    event.preventDefault();
+                    // Отображаем сообщение б ошибке
+                    
+                    alert("Упс... кажется вы заполнили не все поля");
+                }
 
 
                 // Отправляем данные на сервер с помощью fetch
@@ -38,10 +47,17 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                 // Проверяем статус ответа
                 if (!response.ok) {
-                    const errorText = await response.text();
-                    console.error('Ошибка:', response.status, errorText);
-                    alert('Кажется возникла ошибка. Ошибка: ' + response.status + ' ' + errorText);
-                    modal.style.display = "none";
+                    const res = await response.json();
+
+                    console.log(res);
+                    if (res.message == "NameUsed") {
+                        alert("Пользователь с таким именем уже есть");
+                       location.reload();
+                    }
+                    if (res.message == "EmailUsed") {
+                        alert("Email уже занят");
+                        location.reload();
+                    }
                     return;
                 }
 
@@ -59,6 +75,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 event.preventDefault();
                 // Отображаем сообщение б ошибке
                 alert("Упс... кажется вы заполнили не все поля");
+                window.location.reload();
             }
         } catch (error) {
             console.error('Ошибка:', error);
@@ -100,6 +117,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             event.preventDefault();
             // Отображаем сообщение б ошибке
             alert("Упс... кажется вы заполнили не все поля");
+            
         }
         else {
             try {
@@ -139,20 +157,22 @@ document.addEventListener('DOMContentLoaded', async function () {
                     localStorage.setItem('userImg', data.userData.imagePath);
                     window.location.href = "publication.html";
                     modal.style.display = "none";
-                } 
+                }
                 else {
                     console.error('Значения не совпадают. Окно будет закрыто.');
                     alert('Значения не совпадают. Регистрация не может быть продолжена.');
                     document.getElementById('varificText').textContent = "";
-                   // modal.remove; // Закрываем окно
+                    
+                    // modal.remove; // Закрываем окно
                 }
             } catch (error) {
                 console.error('Ошибка:', error);
                 alert('Ошибка при регистрации');
+                
             }
         }
         // Закрыть модальное окно
-       // modal.style.display = "none";
+        // modal.style.display = "none";
 
     };
 

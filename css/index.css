@@ -1,0 +1,56 @@
+header{
+    display: flex;
+    border-bottom: 2px solid #E9E9ED;
+    justify-content: space-between;
+    margin: 0 3rem;
+    padding: 1rem 2rem;
+}
+
+.logo{
+    font-family: Montserrat, sans-serif;
+    font-size: 1.6rem;
+    color: #285680;
+    font-weight: bold;
+    margin-right: 2rem;
+    margin: auto 1rem;
+}
+
+.butn {
+    width: 8rem;
+    height: 45px;
+    background-color: #65DCB8;
+    color: #3A3EA7;
+    border-color: #285680;
+    border-radius: 20px;
+    font-family: Inter;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: auto 1rem;
+}
+
+.main
+{
+    margin: 0 3rem;
+    display: flex;
+
+    justify-content: center; /* Горизонтальное выравнивание по центру */
+    align-items: center; /* Вертикальное выравнивание по центру */
+    height: calc(100vh - 6rem); /* Высота контейнера 100% высоты окна */
+}
+
+.helloTitle{
+    font-family: Nunito Sans, sans-serif;
+    font-size: 5.5rem;
+    font-weight: 800;
+    margin-left: 1rem;
+
+}
+
+.one
+{
+    color: #25B5DB;
+}
+.two
+{
+    color: #285680;
+}

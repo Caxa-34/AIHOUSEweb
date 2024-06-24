@@ -1,7 +1,6 @@
 /* стили основного контента (публикаций)*/
 .cont
 {
-  
     width: 79%;
     margin-top: 0;
     margin-right: 0;
@@ -72,7 +71,7 @@ textarea
 }
 .chatsImg
 {
-    margin-right: 3rem;
+    margin-right: 2rem;
     display: flex;
     flex-direction: column;
     float: right;
