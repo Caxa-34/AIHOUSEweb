@@ -72,7 +72,7 @@
             </div>
             <div class="linkAndImg">
               <img src="img/mage_user.svg" />
-              <a href="#">Мои Подписки</a>
+              <a href="#" id="mySubscribe" class="modalWinRules">Мои Подписки</a>
             </div>
             <div class="linkAndImg">
               <img src="img/settings.svg" />
@@ -149,23 +149,34 @@
           <p class="mainText" id="mainText"></p>
         </div>
         <div class="actionPanel">
-          <button id="likked" type="button" class="like"><img data-liked="isLiked" id="likeBtn"
-              src="./img/like.svg"></button>
-          <p class="countLikes" id="countLikes"></p>
-
-          <div class="complaintsPole">
-            <button class="complaints" id="complaints">Пожаловаться на статью</button>
-            <select id="selectComplaints" class="selectComplaints">
-              <option value="">--Укажите жалобу--</option>
-              <option value="1">Оскорбление личности и её достоинства</option>
-              <option value="2">Религиозная или политическая провокация</option>
-              <option value="3">Публикация недостоверной информации</option>
-              <option value="4">Контент содержит нецензурную лексику</option>
-              <option value="5">Контент содержит жестокие или сексуальные материалы</option>
-              <option value="6">Контент не содержит в себе ничего, что может относиться к тематике форума</option>
-            </select>
+          <div class="likesContainer">
+              <button id="likked" type="button" class="like">
+                  <img data-liked="isLiked" id="likeBtn" src="./img/like.svg">
+              </button>
+              <p class="countLikes" id="countLikes"></p>
           </div>
-        </div>
+      
+          <div class="complaintsGroup">
+            
+              <div class="complaintsCount">
+                  <img src="./img/complaints.svg">
+                  <p id="complCount">4</p>
+              </div>
+      
+              <div class="complaintsPole">
+                  <button class="complaints" id="complaints">Пожаловаться на статью</button>
+                  <select id="selectComplaints" class="selectComplaints">
+                      <option value="">--Укажите жалобу--</option>
+                      <option value="1">Оскорбление личности и её достоинства</option>
+                      <option value="2">Религиозная или политическая провокация</option>
+                      <option value="3">Публикация недостоверной информации</option>
+                      <option value="4">Контент содержит нецензурную лексику</option>
+                      <option value="5">Контент содержит жестокие или сексуальные материалы</option>
+                      <option value="6">Контент не содержит в себе ничего, что может относиться к тематике форума</option>
+                  </select>
+              </div>
+          </div>
+      </div>
       </div>
 
       <div>
@@ -186,6 +197,8 @@
       </div>
     </div>
   </div>
+  <script src="mySubscribe.js" ></script>
+  
   <script src="dropdownMenu.js"></script>
   <script src="fullPublications.js"></script>
   <script src="comments.js"></script>

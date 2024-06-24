@@ -20,6 +20,22 @@ function formatTextForHtml(text) {
     return convertNewlinesToBreaks(escapedText);
 }
 
+function showNotification(message) {
+
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+
+    document.body.appendChild(notification);
+    // Показ уведомления
+    notification.style.display = 'block';
+
+    setTimeout(() => {
+        notification.style.display = 'none';
+        document.body.removeChild(notification);
+    }, 2000);
+};
+
 function formatDate(dateString) {
     const date = new Date(dateString);
 
@@ -48,7 +64,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(formData)
-        });
+        }); 
 
         console.log(`Response status: ${response.status}`);
         if (!response.ok) {
@@ -75,6 +91,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         const pubText = document.getElementById('mainText');
         pubText.innerHTML = formatTextForHtml(publication.text);
         document.getElementById('countLikes').textContent = publication.countLikes; // Количество лайков
+
+        document.getElementById('complCount').textContent = publication.countComplaints; // Количество жалоб
 
         const baseUrl = 'http://94.228.126.25:81';
             const authorImagePath = `${baseUrl}/${publication.author.imagePath}`;
@@ -133,7 +151,7 @@ document.getElementById('pubImege').src =authorImagePath;
 
             } catch (error) {
                 console.error('Error updating like status:', error);
-                alert("Ошибка при обновлении статуса лайка");
+                showNotification("Ошибка при обновлении статуса лайка");
             }
 
         });
@@ -181,9 +199,17 @@ document.getElementById('complaints').addEventListener('click', async function (
         const res = await response.json();
         console.log("результат", res);
 
+
+        showNotification("Жалоба отправлена");
+
+
+       location.reload ();
+
+
+
     } catch{
        // console.error('Error fetching full publication:', error);
-        alert("Кажется возникла ошибка при отправке жалобы.");
+        showNotification("Кажется возникла ошибка при отправке жалобы.");
     }
 
 });

@@ -32,7 +32,7 @@ function showNotification(message) {
 document.addEventListener('DOMContentLoaded', async function () {
     //проверка авторизации и показ соответствующего функционала
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    console.log(isLoggedIn);
+    console.log(isLoggedIn, "true?");
 
     if (isLoggedIn) {
         document.getElementById('beforeAuth').style.display = 'none';
@@ -45,20 +45,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         document.getElementById('createPubBtn').style.display = 'none';
         document.getElementById('createChatsBtn').style.display = 'none';
     }
-
-
-    //выход по кнопке 
-    const logoutButton = document.getElementById('logoutButton');
-
-    logoutButton.addEventListener('click', async function () {
-        localStorage.removeItem('isLoggedIn');
-        localStorage.setItem('id', 0);
-        localStorage.setItem('likedPublications', null);
-        window.location.href = 'publication.html';
-
-    });
-
-
 
 
 
@@ -122,7 +108,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                 //Проверка, был ли лайк установлен
                 const isLiked = publication.isSetLike;
-
+ 
                 //Проверка, была ли подписка
                 const isSubscribed = publication.isSetSubscribe;
 
@@ -137,6 +123,8 @@ document.addEventListener('DOMContentLoaded', async function () {
                 const authorImagePath = `${baseUrl}/${publication.author.imagePath}`;
                 console.log(authorImagePath);
 
+
+        
 
                 // Создаем шаблон для каждой публикации
                 const publicationTemplate = `
@@ -160,7 +148,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             </div>
          `;
 
-                // Добавляем шаблон публикации в контейнер
+                         // Добавляем шаблон публикации в контейнер
                 publicationContainer.insertAdjacentHTML('beforeend', publicationTemplate);
 
 

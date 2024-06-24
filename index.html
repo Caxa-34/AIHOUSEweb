@@ -37,6 +37,7 @@
     {
         localStorage.setItem('id', 0);
         const loc = localStorage.getItem('id');
+        localStorage.setItem('isLoggedIn', false);
         window.location.href = 'publication.html';
         console.log(loc);
     })

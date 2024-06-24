@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const userId = localStorage.getItem('id');
     console.log(`User id: ${userId}`);
 
+    
     try {
         const formData = {
             idPublication: publicationId,
@@ -68,7 +69,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         alert("Кажется возникла ошибка при загрузке комментариев.");
     }
 
-});
 
 document.getElementById('sendComm').addEventListener('click', async function (event) {
     event.preventDefault();
@@ -110,7 +110,7 @@ document.getElementById('sendComm').addEventListener('click', async function (ev
         const data = await response.json();
         console.log('Ответ от сервера:', data); // Выводим ответ в консоль
 
-        location.reload();
+       location.reload();
 
 
     } catch (error) {
@@ -118,5 +118,7 @@ document.getElementById('sendComm').addEventListener('click', async function (ev
         alert("Кажется возникла ошибка при отправке комментариев.");
     }
 
+
+});
 
 });

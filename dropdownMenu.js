@@ -118,8 +118,9 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     var paragraph3 = document.createElement('p');
     paragraph3.textContent = '3. Достоверный контент.\n  Пожалуйста публикуйте только проверенный контент, ' +
-        'не пишите вымысел или недоставерную информацию. Не вводите в заблуждение других людей';
+        'не пишите вымысел или недоставерную информацию. Не вводите в заблуждение других людей. А также придерживайтесь темитики данного форума.';
 
+ 
 
     // Добавляем элементы в модальное окно
     modalHeader.appendChild(modalTitle);
@@ -157,11 +158,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     };
 
 
-    //создание возможности показа всплавающего уведомления
-    const copyIcon = document.getElementById("copyIcon");
-    const userTextElement = document.getElementById("useridIndrop");
-
-
     // Функция для показа уведомления
     const showNotification = (message) => {
 
@@ -179,39 +175,39 @@ document.addEventListener('DOMContentLoaded', async function () {
         }, 2000);
     };
 
-  
-        loadScript('https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js', function () {
-            // Инициализация clipboard.js
-            const clipboard = new ClipboardJS('#copyIcon');
 
-            // Успешное копирование
-            clipboard.on('success', function (e) {
-                showNotification('ID скопирован в буфер обмена: ' + e.text);
-                e.clearSelection(); // Деселектировать текст
-            });
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js', function () {
+        // Инициализация clipboard.js
+        const clipboard = new ClipboardJS('#copyIcon');
 
-            // Ошибка при копировании
-            clipboard.on('error', function (e) {
-                showNotification('Ошибка при копировании: ' + e.action);
-            });
+        // Успешное копирование
+        clipboard.on('success', function (e) {
+            showNotification('ID скопирован в буфер обмена: ' + e.text);
+            e.clearSelection(); // Деселектировать текст
         });
 
-
-        loadScript('https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js', function () {
-            // Инициализация clipboard.js
-            const clipboard = new ClipboardJS('#copyEmail');
-
-            // Успешное копирование
-            clipboard.on('success', function (e) {
-                showNotification('ID скопирован в буфер обмена: ' + e.text);
-                e.clearSelection(); // Деселектировать текст
-            });
-
-            // Ошибка при копировании
-            clipboard.on('error', function (e) {
-                showNotification('Ошибка при копировании: ' + e.action);
-            });
+        // Ошибка при копировании
+        clipboard.on('error', function (e) {
+            showNotification('Ошибка при копировании: ' + e.action);
         });
+    });
+
+
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js', function () {
+        // Инициализация clipboard.js
+        const clipboard = new ClipboardJS('#copyEmail');
+
+        // Успешное копирование
+        clipboard.on('success', function (e) {
+            showNotification('ID скопирован в буфер обмена: ' + e.text);
+            e.clearSelection(); // Деселектировать текст
+        });
+
+        // Ошибка при копировании
+        clipboard.on('error', function (e) {
+            showNotification('Ошибка при копировании: ' + e.action);
+        });
+    });
 
     //вывод окна уведомлений
     const dropdownIconNotif = document.getElementById("notifImg");
