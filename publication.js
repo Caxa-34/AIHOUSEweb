@@ -30,6 +30,38 @@ function showNotification(message) {
 };
 
 document.addEventListener('DOMContentLoaded', async function () {
+    //проверка авторизации и показ соответствующего функционала
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    console.log(isLoggedIn);
+
+    if (isLoggedIn) {
+        document.getElementById('beforeAuth').style.display = 'none';
+        document.getElementById('afterAuth').style.display = 'flex';
+        document.getElementById('createPubBtn').style.display = 'block';
+        document.getElementById('createChatsBtn').style.display = 'block';
+    } else {
+        document.getElementById('beforeAuth').style.display = 'flex';
+        document.getElementById('afterAuth').style.display = 'none';
+        document.getElementById('createPubBtn').style.display = 'none';
+        document.getElementById('createChatsBtn').style.display = 'none';
+    }
+
+
+    //выход по кнопке 
+    const logoutButton = document.getElementById('logoutButton');
+
+    logoutButton.addEventListener('click', async function () {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.setItem('id', 0);
+        localStorage.setItem('likedPublications', null);
+        window.location.href = 'publication.html';
+
+    });
+
+
+
+
+
 
     const userId = localStorage.getItem('id'); // Получение ID авторизованного пользователя из localStorage
     console.log(`Fetching publications for userId: ${userId}`);

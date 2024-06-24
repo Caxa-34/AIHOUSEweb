@@ -36,7 +36,9 @@
         document.getElementById('btnEnter').addEventListener('click', function()
     {
         localStorage.setItem('id', 0);
+        const loc = localStorage.getItem('id');
         window.location.href = 'publication.html';
+        console.log(loc);
     })
     </script>
 </body>
