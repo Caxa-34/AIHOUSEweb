@@ -87,6 +87,7 @@ td {}
     font-family: Inter;
     font-weight: 400;
     margin-top: 1rem;
+    resize: none
 }
 
 /* Стили для Toggle Switch */

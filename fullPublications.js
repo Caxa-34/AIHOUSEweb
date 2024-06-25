@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         //проверка жалоб
         if(publication.isSetComplaint)
             {
-                document.getElementById('complaints').textContent="Жалоьа отправлена";
+                document.getElementById('complaints').textContent="Жалоба отправлена";
                 document.getElementById('selectComplaints').style.display = 'none';
             }
 
@@ -111,6 +111,18 @@ document.addEventListener('DOMContentLoaded', async function () {
         const authorname = document.getElementById('authorName');
         console.log(authorname);
 
+        //переход на страницу пользователя
+        const AutorInfo = document.getElementById('authorName');
+
+        AutorInfo.addEventListener('click', function () {
+            const publicationAuthorId = publication.author.id;
+    
+            localStorage.setItem('publicAuthorId', publicationAuthorId); // Сохранение ID автора публикации
+    
+            console.log("id автора в хранилище ", publicationAuthorId);
+    
+            window.location.href = 'userPage.html';
+        });
 
         //установка лайка
         // Обработчик для лайков

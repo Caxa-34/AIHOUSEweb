@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 <div class=headsComm>
                     <img class="comUserImege" src="${authorImagePath}">
                     <div class="headerPub">
-                        <p class="authorNameComm">${element.author.name}</p>
+                        <p class="authorNameComm" data-author-id="${element.author.id}">${element.author.name}</p>
                         <p class="dateAddCom">${formattedDate}</p>
                     </div>
                 </div>
@@ -62,6 +62,21 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             // Добавляем шаблон публикации в контейнер
             commentsContainer.insertAdjacentHTML('beforeend', commTemplate);
+
+            //переход на страницу пользователя
+            const AutorInfo = document.querySelectorAll('.authorNameComm');
+            AutorInfo.forEach(element => {
+                element.addEventListener('click', function () {
+                    const publicationAuthorId = this.getAttribute('data-author-id');
+
+                    localStorage.setItem('publicAuthorId', publicationAuthorId); // Сохранение ID автора публикации
+
+                    console.log("id автора в хранилище ", publicationAuthorId);
+
+                    window.location.href = 'userPage.html';
+
+                });
+            });
         });
 
     } catch (error) {
@@ -69,7 +84,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         alert("Кажется возникла ошибка при загрузке комментариев.");
     }
 
-
+//отправка комментариев
 document.getElementById('sendComm').addEventListener('click', async function (event) {
     event.preventDefault();
 
@@ -109,6 +124,7 @@ document.getElementById('sendComm').addEventListener('click', async function (ev
 
         const data = await response.json();
         console.log('Ответ от сервера:', data); // Выводим ответ в консоль
+
 
        location.reload();
 

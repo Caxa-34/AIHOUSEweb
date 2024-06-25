@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             }
         });
     }
-    //переход на страницу пользователя по клаку на имя пользователя в меню
+    //переход на страницу пользователя по клику на имя пользователя в меню
     const AutorInfo = document.getElementById('userName');
 
     AutorInfo.addEventListener('click', function () {
@@ -80,10 +80,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.log("id автора в хранилище ", publicationAuthorId);
 
         window.location.href = 'userPage.html';
-
-
     });
-
 
 
     // Создаем модальное окно
@@ -120,13 +117,18 @@ document.addEventListener('DOMContentLoaded', async function () {
     paragraph3.textContent = '3. Достоверный контент.\n  Пожалуйста публикуйте только проверенный контент, ' +
         'не пишите вымысел или недоставерную информацию. Не вводите в заблуждение других людей. А также придерживайтесь темитики данного форума.';
 
- 
+        var paragraph4 = document.createElement('p');
+        paragraph4.textContent = '4. Тематика форума.\n  Любой контент, публикуемый на форуме, ' +
+        'а также тематика обсуждений должна так или иначе относиться к теме искусственного интеллекта и нейросетей.';
+    
+     
 
     // Добавляем элементы в модальное окно
     modalHeader.appendChild(modalTitle);
     modalBody.appendChild(paragraph1);
     modalBody.appendChild(paragraph2);
     modalBody.appendChild(paragraph3);
+    modalBody.appendChild(paragraph4);
     modalContent.appendChild(closeButton);
     modalContent.appendChild(modalHeader);
     modalContent.appendChild(modalBody);

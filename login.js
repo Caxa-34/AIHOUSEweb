@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function () {
 
-    // Получить элементы
+    // Получить элементы 
     var modal = document.getElementById("rulesModal");
     var btnShowRules = document.getElementById("btnShowRules");
     var btnAcceptAndRegister = document.getElementById("btnAcceptAndRegister");
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Показать модальное окно при нажатии на кнопку "Продолжить"
     btnShowRules.onclick = async function (event) {
         modal.style.display = "block";
-
+       
         const name = document.getElementById('tbUsername').value;
         const password = document.getElementById('tbPassword').value;
         const email = document.getElementById('tbEmail').value;

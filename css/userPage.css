@@ -94,6 +94,7 @@ table {
     text-align: left;
     white-space: nowrap;
     margin-left: 1rem;
+    
 }
 
 .dataUser {
@@ -177,7 +178,7 @@ table {
     font-size: 1.15rem;
     font-weight: 500;
 
-
+    resize: none
     
 }
 

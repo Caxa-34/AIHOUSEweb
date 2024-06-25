@@ -124,8 +124,6 @@ document.addEventListener('DOMContentLoaded', async function () {
                 console.log(authorImagePath);
 
 
-        
-
                 // Создаем шаблон для каждой публикации
                 const publicationTemplate = `
              <div class="pub">
