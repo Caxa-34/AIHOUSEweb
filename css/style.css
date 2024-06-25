@@ -146,7 +146,7 @@ input[type=text]
 {
     margin-bottom: 1rem;
 }
-.like, .countLikes, .addSubscribe
+.like, .countLikes, .addSubscribe, .subread
 {
     display: inline-block;
     vertical-align: middle;
@@ -156,12 +156,15 @@ input[type=text]
     background-color: white;
 }
 
-.addSubscribe
+.addSubscribe, .subread
 {
     border: none;
     background-color: white;
     margin-left: 1.5rem;
+    margin: auto 1.5rem;
 }
+
+
 
 .readMore
 {

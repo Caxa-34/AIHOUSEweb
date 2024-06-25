@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             notifContainer.innerHTML = '';
 
             const notifCount = document.getElementById('notifCount');
-
+            const readntCount = notifications.filter(notification => !notification.wasRead).length;
             if (notifications == 0) {
                 notifContainer.textContent = 'У вас пока что нет уведомлений';
                 notifContainer.style.textAlign = 'center';
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             else {
                 notifContainer.innerHTML = '';
                 console.log(notifications.length);
-                notifCount.textContent = notifications.length;
+                notifCount.textContent = readntCount;
             }
 
 
@@ -297,12 +297,12 @@ document.addEventListener('DOMContentLoaded', async function () {
                     <p id="textTitle" class="titleNotification">${notificatoin.title}</p>
                     <p id="textPost" class="textNotification" >${notificatoin.text}</p>
                     <p class="dateCreateNotif">${formattedDate}</p>
-                    <p class= statusNotif>${status}</p>
-                    
+                        
                 </div>
              `;
                 // Добавляем шаблон публикации в контейнер
                 notifContainer.insertAdjacentHTML('beforeend', notificatoinTemplate);
+                
             });
 
             // Добавляем обработчик кликов для уведомлений

@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                 //Проверка, был ли лайк установлен
                 const isLiked = publication.isSetLike;
- 
+
                 //Проверка, была ли подписка
                 const isSubscribed = publication.isSetSubscribe;
 
@@ -141,14 +141,15 @@ document.addEventListener('DOMContentLoaded', async function () {
                     <button id="likked" type="button" class="like" data-publication-id="${publication.id}" data-liked="${isLiked}"><img id="likeBtn" src="${likeImageSrc}"></button> 
                     <p class="countLikes">${publication.countLikes}</p>
                     <button type="button" class="addSubscribe" id="addSubscribe" data-author-id="${publication.author.id}" data-subscribed="${isSubscribed}"><img src="${SubscrybeImageSrc}"></button> 
-                    <img src="${readImageSrc}" class="addSubscribe" id="readMarcer" data-publication-id="${publication.id}">
+                    <img src="${readImageSrc}" class="subread" id="readMarcer" data-publication-id="${publication.id}">
                 </div>
             </div>
          `;
 
-                         // Добавляем шаблон публикации в контейнер
+                // Добавляем шаблон публикации в контейнер
                 publicationContainer.insertAdjacentHTML('beforeend', publicationTemplate);
 
+          
 
             });
 
@@ -194,6 +195,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         renderPublications(publications);
 
+              restoreScrollPosition();
         // Функция поиска публикаций по имени автора и заголовку
 
 
@@ -215,33 +217,33 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                     const searchText = document.getElementById('searchText').value.trim().toLowerCase();
                     const filteredPublications = publications.filter(pub => {
-                        return pub.title.toLowerCase().includes(searchText) || 
-                        pub.text.toLowerCase().includes(searchText) || pub.author.name.toLowerCase().includes(searchText) 
-                        || pub.author.id.toString().toLowerCase().includes(searchText);
+                        return pub.title.toLowerCase().includes(searchText) ||
+                            pub.text.toLowerCase().includes(searchText) || pub.author.name.toLowerCase().includes(searchText)
+                            || pub.author.id.toString().toLowerCase().includes(searchText);
                     });
                     renderPublications(filteredPublications);
 
                 });
 
                 btnPub.addEventListener('click', async function () {
-                    
+
                     const searchText = document.getElementById('searchText').value.trim().toLowerCase();
                     const filteredPublications = publications.filter(pub => {
-                        return pub.title.toLowerCase().includes(searchText) || 
-                        pub.text.toLowerCase().includes(searchText);
+                        return pub.title.toLowerCase().includes(searchText) ||
+                            pub.text.toLowerCase().includes(searchText);
                     });
                     renderPublications(filteredPublications);
                 });
 
                 btnUs.addEventListener('click', async function () {
-                   
+
                     const searchText = document.getElementById('searchText').value.trim().toLowerCase();
                     const filteredPublications = publications.filter(pub => {
-                        return pub.author.name.toLowerCase().includes(searchText) 
-                        || pub.author.id.toString().toLowerCase().includes(searchText);
+                        return pub.author.name.toLowerCase().includes(searchText)
+                            || pub.author.id.toString().toLowerCase().includes(searchText);
                     });
                     renderPublications(filteredPublications);
-                  
+
                 });
 
             }
@@ -285,6 +287,8 @@ document.addEventListener('DOMContentLoaded', async function () {
                         throw new Error(`Network response was not ok: ${likeResponse.statusText}`);
                     }
 
+                    const res = await likeResponse.json();
+                    console.log("лайки", res)
 
                     // Обновляем состояние лайка
                     const newLikedState = !isLiked;
@@ -296,8 +300,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
                     // Обновляем счетчик лайков
                     const countLikesElement = this.nextElementSibling;
-                    const currentLikes = parseInt(countLikesElement.textContent, 10);
-                    countLikesElement.textContent = newLikedState ? currentLikes + 1 : currentLikes - 1;
+                    countLikesElement.textContent = res.countLikes;
 
 
 
@@ -347,6 +350,11 @@ document.addEventListener('DOMContentLoaded', async function () {
                     const subImg = this.querySelector('img');
                     subImg.src = newSubscribedState ? 'img/unsubscribe.svg' : 'img/subscribe.svg';
 
+                    // Пример использования
+   
+                    saveScrollPosition();
+                   location.reload();
+
 
                 } catch (error) {
                     console.error('Error updating subscribe status:', error);
@@ -363,5 +371,22 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 
 });
+
+// Сохранение позиции прокрутки
+const saveScrollPosition = () => {
+    localStorage.setItem('scrollPosition', window.scrollY);
+    console.log('scroll', window.scrollY);
+};
+
+// Восстановление позиции прокрутки
+const restoreScrollPosition = () => {
+    const scrollPosition = localStorage.getItem('scrollPosition');
+    console.log('restore', scrollPosition);
+    if (scrollPosition !== null) {
+        window.scrollTo(0, parseInt(scrollPosition, 10));
+        localStorage.removeItem('scrollPosition');
+        
+    }
+};
 
 
