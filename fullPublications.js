@@ -48,7 +48,10 @@ function formatDate(dateString) {
     return `${year}.${month}.${day} ${hours}:${minutes}`;
 }
 
+let publication;
+
 document.addEventListener('DOMContentLoaded', async function () {
+
     const publicationId = localStorage.getItem('publicId'); // Получение ID публикации из localStorage
     console.log(`Fetching full publication for publicationId: ${publicationId}`);
 
@@ -64,18 +67,25 @@ document.addEventListener('DOMContentLoaded', async function () {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(formData)
-        }); 
+        });
 
         console.log(`Response status: ${response.status}`);
         if (!response.ok) {
             throw new Error(`Failed to fetch publication: ${response.statusText}`);
         }
 
+
         const res = await response.json();
-        const publication = res.publication;
+        publication = res.publication;
         // Обновляем содержимое страницы
         console.log("публикация", publication);
 
+        //проверка жалоб
+        if(publication.isSetComplaint)
+            {
+                document.getElementById('complaints').textContent="Жалоьа отправлена";
+                document.getElementById('selectComplaints').style.display = 'none';
+            }
 
         const likeImageSrc = publication.isSetLike ? 'img/unlike.svg' : 'img/like.svg';
         const likeButtonImg = document.getElementById('likeBtn');
@@ -95,8 +105,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         document.getElementById('complCount').textContent = publication.countComplaints; // Количество жалоб
 
         const baseUrl = 'http://94.228.126.25:81';
-            const authorImagePath = `${baseUrl}/${publication.author.imagePath}`;
-document.getElementById('pubImege').src =authorImagePath;
+        const authorImagePath = `${baseUrl}/${publication.author.imagePath}`;
+        document.getElementById('pubImege').src = authorImagePath;
 
         const authorname = document.getElementById('authorName');
         console.log(authorname);
@@ -147,7 +157,7 @@ document.getElementById('pubImege').src =authorImagePath;
                     document.getElementById('likeCount').textContent = publication.countLikes;
                 }
 
-                location.reload ();
+                location.reload();
 
             } catch (error) {
                 console.error('Error updating like status:', error);
@@ -160,58 +170,66 @@ document.getElementById('pubImege').src =authorImagePath;
         console.error('Error fetching full publication:', error);
         alert("Кажется возникла ошибка при загрузке полной публикации.");
     }
-});
 
-//жалобы
 
-document.getElementById('complaints').addEventListener('click', async function (event) {
-    //event.preventDefault();
+    //жалобы
 
-    const idViolation = document.getElementById('selectComplaints').value;
-    console.log(idViolation);
+    document.getElementById('complaints').addEventListener('click', async function (event) {
+        event.preventDefault();
 
-    const idUser = localStorage.getItem('id');
-    console.log(idUser);
+        if(publication.isSetComplaint)
+            {
+                showNotification("Вы уже отправляли жалобу на эту публикацию");
+                return;
+            }
 
-    const idPublication = localStorage.getItem('publicId');
-    console.log(idPublication);
+        const idViolation = document.getElementById('selectComplaints').value;
+        console.log(idViolation);
 
-    const formData = {
-        idUser: idUser,
-        idPublication: idPublication, 
-        idViolation: idViolation
-    }
+        const idUser = localStorage.getItem('id');
+        console.log(idUser);
 
-    try{
-        const response = await fetch('http://94.228.126.25:3210/api/complaints/add', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
+        const idPublication = localStorage.getItem('publicId');
+        console.log(idPublication);
 
-        console.log(`Response status: ${response.status}`);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch publication: ${response.statusText}`);
+        const formData = {
+            idUser: idUser,
+            idPublication: idPublication,
+            idViolation: idViolation
         }
 
-        const res = await response.json();
-        console.log("результат", res);
+        try {
+            const response = await fetch('http://94.228.126.25:3210/api/complaints/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            console.log(`Response status: ${response.status}`);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch publication: ${response.statusText}`);
+            }
 
 
-        showNotification("Жалоба отправлена");
+            const res = await response.json();
+            console.log("результат", res);
 
 
-       location.reload ();
+            showNotification("Жалоба отправлена");
+
+
+            location.reload();
 
 
 
-    } catch{
-       // console.error('Error fetching full publication:', error);
-        showNotification("Кажется возникла ошибка при отправке жалобы.");
-    }
+        } catch {
+            // console.error('Error fetching full publication:', error);
+            showNotification("Кажется возникла ошибка при отправке жалобы.");
+        }
+
+    });
+
 
 });
-
-

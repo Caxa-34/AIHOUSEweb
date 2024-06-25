@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 // Выбираем картинку для лайка в зависимости от состояния
                 const likeImageSrc = publication.isSetLike ? 'img/unlike.svg' : 'img/like.svg';
                 const SubscrybeImageSrc = publication.isSetSubscribe ? 'img/unsubscribe.svg' : 'img/subscribe.svg';
-                const readImageSrc = publication.isRead ? 'img/read.svg' : 'img/unread.svg';
+                const readImageSrc = publication.isRead ? 'img/read.svg' : '';
 
 
 
