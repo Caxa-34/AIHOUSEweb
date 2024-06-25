@@ -174,12 +174,12 @@ document.addEventListener('DOMContentLoaded', async function () {
             publicationElements.forEach(element => {
                 element.addEventListener('click', function () {
                     const publicationIdforRead = this.getAttribute('data-publication-id');
-                    const publicationTitleforRead = this.getAttribute('data-title');
-                    const publicationTextforRead = this.getAttribute('data-title');
+                   // const publicationTitleforRead = this.getAttribute('data-title');
+                   // const publicationTextforRead = this.getAttribute('data-title');
 
                     localStorage.setItem('publicId', publicationIdforRead); // Сохранение ID публикации
-                    localStorage.setItem('publicTitle', publicationTitleforRead);
-                    localStorage.setItem('publicText', publicationTextforRead);
+                //    localStorage.setItem('publicTitle', publicationTitleforRead);
+                  //  localStorage.setItem('publicText', publicationTextforRead);
                     console.log("id в хранилище " + localStorage.getItem('publicId'));
 
                     const isLike = this.getAttribute('data-liked')

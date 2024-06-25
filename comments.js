@@ -1,4 +1,6 @@
+
 document.addEventListener('DOMContentLoaded', async function () {
+    
     const publicationId = localStorage.getItem('publicId'); // Получение ID публикации из localStorage
     console.log(`Fetching full publication for publicationId: ${publicationId}`);
 
